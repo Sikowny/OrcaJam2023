@@ -1,27 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3pgm0qpp5mb4"]
+[gd_scene load_steps=5 format=3 uid="uid://b3pgm0qpp5mb4"]
 
-[ext_resource type="Script" path="res://Scripts/hitbox.gd" id="1_36ybk"]
-[ext_resource type="Material" uid="uid://bv8s1i82q3osm" path="res://Assets/Materials/hitbox_material.tres" id="2_250lc"]
-[ext_resource type="PackedScene" uid="uid://bt628kp1g55qp" path="res://Scenes/debug_text.tscn" id="2_y3jjn"]
+[ext_resource type="Script" path="res://Scripts/Common/hitbox.gd" id="1_poged"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4u50v"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_thhf7"]
+transparency = 1
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(1, 0, 0, 0.588235)
+
 [sub_resource type="SphereMesh" id="SphereMesh_xk4wu"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_a1qme"]
-viewport_path = NodePath("SubViewport")
-
 [node name="Hitbox" type="Area3D"]
-script = ExtResource("1_36ybk")
+script = ExtResource("1_poged")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_4u50v")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
-material_override = ExtResource("2_250lc")
+material_override = SubResource("StandardMaterial3D_thhf7")
 mesh = SubResource("SphereMesh_xk4wu")
-
-[node name="debug_text" parent="." instance=ExtResource("2_y3jjn")]
-texture = SubResource("ViewportTexture_a1qme")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

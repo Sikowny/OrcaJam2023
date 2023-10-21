@@ -10,7 +10,7 @@
 resource_local_to_scene = true
 material = ExtResource("2_1os4t")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fk4qt"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_m71y7"]
 viewport_path = NodePath("SubViewport")
 
 [node name="dirty_object" type="Area3D" groups=["dirty_things"]]
@@ -24,4 +24,4 @@ shape = SubResource("SphereShape3D_cip70")
 mesh = SubResource("SphereMesh_s4hin")
 
 [node name="debug_text" parent="." instance=ExtResource("2_u55ve")]
-texture = SubResource("ViewportTexture_fk4qt")
+texture = SubResource("ViewportTexture_m71y7")

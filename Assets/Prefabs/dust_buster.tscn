@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6lh8d88sfc7v"]
-
-[ext_resource type="PackedScene" uid="uid://xnnlmapxtr4m" path="res://Assets/Models/Gear/DustBuster.glb" id="1_3gr4e"]
-
-[node name="DustBuster" type="Node3D"]
-
-[node name="DustBuster_Mesh" parent="." instance=ExtResource("1_3gr4e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.80692, 1.46335, 1.21724)

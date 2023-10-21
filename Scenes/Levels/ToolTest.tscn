@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2p4dec7mkdkf"]
+
+[ext_resource type="PackedScene" uid="uid://c6lh8d88sfc7v" path="res://Assets/Prefabs/DustBuster.tscn" id="1_a2ijd"]
+
+[node name="ToolTest" type="Node3D"]
+
+[node name="DustBuster" parent="." instance=ExtResource("1_a2ijd")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.862469, -0.269372, 0.428468, 1.49012e-08, 0.846593, 0.532241, -0.506109, -0.459042, 0.730161, 1.54529, 2.41785, 2.34664)

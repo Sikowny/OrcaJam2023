@@ -37,8 +37,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 1)
 
 [node name="dirty_object2" parent="." instance=ExtResource("3_m7efn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.172877, 0.5, -3.77387)
-dirty_type = 1
+dirty_type = "Wet"
 
 [node name="dirty_object3" parent="." instance=ExtResource("3_m7efn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6671, 0.5, 0.675014)
-dirty_type = 2
+dirty_type = "Goo"
