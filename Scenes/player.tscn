@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4exshole0aqw"]
+
+[ext_resource type="Script" path="res://Scenes/player.gd" id="1_lkaus"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sycly"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3kl3l"]
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_go117"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_lkaus")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_sycly")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_3kl3l")
+skeleton = NodePath("../..")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+shape = SubResource("SeparationRayShape3D_go117")
+spring_length = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
