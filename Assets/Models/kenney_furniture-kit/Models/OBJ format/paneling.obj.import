@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dle3ibprdw631"
+path="res://.godot/imported/paneling.obj-239a614857a53fab08749efb1fda1922.mesh"
+
+[deps]
+
+files=["res://.godot/imported/paneling.obj-239a614857a53fab08749efb1fda1922.mesh"]
+
+source_file="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/paneling.obj"
+dest_files=["res://.godot/imported/paneling.obj-239a614857a53fab08749efb1fda1922.mesh", "res://.godot/imported/paneling.obj-239a614857a53fab08749efb1fda1922.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://gpq7antvxp41"
+path="res://.godot/imported/wallDoorwayWide.obj-d5d8da2d8393f7abdc7f4eb51c7a881f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wallDoorwayWide.obj-d5d8da2d8393f7abdc7f4eb51c7a881f.mesh"]
+
+source_file="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/wallDoorwayWide.obj"
+dest_files=["res://.godot/imported/wallDoorwayWide.obj-d5d8da2d8393f7abdc7f4eb51c7a881f.mesh", "res://.godot/imported/wallDoorwayWide.obj-d5d8da2d8393f7abdc7f4eb51c7a881f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

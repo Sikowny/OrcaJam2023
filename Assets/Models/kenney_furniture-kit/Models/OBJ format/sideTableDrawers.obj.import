@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://lbqfa7k5hl4a"
+path="res://.godot/imported/sideTableDrawers.obj-a88543f30ab93217cea63c9d46d03e9b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/sideTableDrawers.obj-a88543f30ab93217cea63c9d46d03e9b.mesh"]
+
+source_file="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/sideTableDrawers.obj"
+dest_files=["res://.godot/imported/sideTableDrawers.obj-a88543f30ab93217cea63c9d46d03e9b.mesh", "res://.godot/imported/sideTableDrawers.obj-a88543f30ab93217cea63c9d46d03e9b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

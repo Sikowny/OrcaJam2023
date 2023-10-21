@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://caj1vmn7476hm"
+path="res://.godot/imported/tableCloth.obj-6560acee6dab2e60c08492774cb6ddea.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tableCloth.obj-6560acee6dab2e60c08492774cb6ddea.mesh"]
+
+source_file="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/tableCloth.obj"
+dest_files=["res://.godot/imported/tableCloth.obj-6560acee6dab2e60c08492774cb6ddea.mesh", "res://.godot/imported/tableCloth.obj-6560acee6dab2e60c08492774cb6ddea.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

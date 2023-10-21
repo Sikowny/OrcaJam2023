@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dyc7pmcnks6qj"
+path="res://.godot/imported/lampSquareCeiling.obj-e2a5001ffa86ec226e60e73daa4d076b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/lampSquareCeiling.obj-e2a5001ffa86ec226e60e73daa4d076b.mesh"]
+
+source_file="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/lampSquareCeiling.obj"
+dest_files=["res://.godot/imported/lampSquareCeiling.obj-e2a5001ffa86ec226e60e73daa4d076b.mesh", "res://.godot/imported/lampSquareCeiling.obj-e2a5001ffa86ec226e60e73daa4d076b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cvjhg3e7t55s"
+path="res://.godot/imported/chairRounded.obj-6ac2176b50fbee988e13eaa3268bce6e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/chairRounded.obj-6ac2176b50fbee988e13eaa3268bce6e.mesh"]
+
+source_file="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/chairRounded.obj"
+dest_files=["res://.godot/imported/chairRounded.obj-6ac2176b50fbee988e13eaa3268bce6e.mesh", "res://.godot/imported/chairRounded.obj-6ac2176b50fbee988e13eaa3268bce6e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

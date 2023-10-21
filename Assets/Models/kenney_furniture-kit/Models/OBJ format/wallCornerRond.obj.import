@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b2ahfp2kym4uw"
+path="res://.godot/imported/wallCornerRond.obj-88d1ebba0903792d86a02face8f45ec0.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wallCornerRond.obj-88d1ebba0903792d86a02face8f45ec0.mesh"]
+
+source_file="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/wallCornerRond.obj"
+dest_files=["res://.godot/imported/wallCornerRond.obj-88d1ebba0903792d86a02face8f45ec0.mesh", "res://.godot/imported/wallCornerRond.obj-88d1ebba0903792d86a02face8f45ec0.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cxx1in5gh2yx"
+path="res://.godot/imported/bedDouble.obj-2a42810b003d99f77a0e2d4d722a78ec.mesh"
+
+[deps]
+
+files=["res://.godot/imported/bedDouble.obj-2a42810b003d99f77a0e2d4d722a78ec.mesh"]
+
+source_file="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/bedDouble.obj"
+dest_files=["res://.godot/imported/bedDouble.obj-2a42810b003d99f77a0e2d4d722a78ec.mesh", "res://.godot/imported/bedDouble.obj-2a42810b003d99f77a0e2d4d722a78ec.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

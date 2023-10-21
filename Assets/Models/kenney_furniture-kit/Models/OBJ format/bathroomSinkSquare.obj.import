@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bac0a5glp1gps"
+path="res://.godot/imported/bathroomSinkSquare.obj-7fcb85b0ee0ffb4fe371ce84091ccf89.mesh"
+
+[deps]
+
+files=["res://.godot/imported/bathroomSinkSquare.obj-7fcb85b0ee0ffb4fe371ce84091ccf89.mesh"]
+
+source_file="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/bathroomSinkSquare.obj"
+dest_files=["res://.godot/imported/bathroomSinkSquare.obj-7fcb85b0ee0ffb4fe371ce84091ccf89.mesh", "res://.godot/imported/bathroomSinkSquare.obj-7fcb85b0ee0ffb4fe371ce84091ccf89.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

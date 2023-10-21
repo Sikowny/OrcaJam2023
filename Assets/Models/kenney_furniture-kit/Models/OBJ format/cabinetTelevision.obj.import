@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cvmbjy1s747m8"
+path="res://.godot/imported/cabinetTelevision.obj-0c6616f1c6ae03c205c2fe248cf60720.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cabinetTelevision.obj-0c6616f1c6ae03c205c2fe248cf60720.mesh"]
+
+source_file="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/cabinetTelevision.obj"
+dest_files=["res://.godot/imported/cabinetTelevision.obj-0c6616f1c6ae03c205c2fe248cf60720.mesh", "res://.godot/imported/cabinetTelevision.obj-0c6616f1c6ae03c205c2fe248cf60720.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

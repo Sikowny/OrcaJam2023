@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c4tbu2tt6uaxn"
+path="res://.godot/imported/benchCushionLow.obj-6e8c0e64aa5542cc359032ba42ccfbe0.mesh"
+
+[deps]
+
+files=["res://.godot/imported/benchCushionLow.obj-6e8c0e64aa5542cc359032ba42ccfbe0.mesh"]
+
+source_file="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/benchCushionLow.obj"
+dest_files=["res://.godot/imported/benchCushionLow.obj-6e8c0e64aa5542cc359032ba42ccfbe0.mesh", "res://.godot/imported/benchCushionLow.obj-6e8c0e64aa5542cc359032ba42ccfbe0.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
