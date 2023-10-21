@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b4exshole0aqw"]
 
-[ext_resource type="Script" path="res://Scenes/player.gd" id="1_lkaus"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_lkaus"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sycly"]
 

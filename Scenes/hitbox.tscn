@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b3pgm0qpp5mb4"]
 
-[ext_resource type="Script" path="res://Scenes/hitbox.gd" id="1_8inq8"]
+[ext_resource type="Script" path="res://Scripts/hitbox.gd" id="1_8inq8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4u50v"]
 
