@@ -7,12 +7,14 @@ extends "res://Scripts/Tools/Tool.gd"
 func _ready():
 	particles.emitting = false
 	m_hitbox.set_active(false)
+	set_physics_process(false)
 	
 func on_button_press():
 	#print("on dust bust enter press")
 	visible = true
 	particles.emitting = true
 	m_hitbox.set_active(true)
+	set_physics_process(true)
 	
 func on_button_release():
 	visible = false
@@ -20,3 +22,4 @@ func on_button_release():
 	particles.emitting = false
 	m_hitbox.set_active(false)
 	set_process(false)
+	set_physics_process(false)

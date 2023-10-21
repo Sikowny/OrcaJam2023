@@ -39,7 +39,10 @@ scale_curve = SubResource("CurveTexture_a6uei")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 1.105, -0.496)
 script = ExtResource("1_t6p0u")
 particles = NodePath("GPUParticles3D")
+attackType = null
 m_hitbox = NodePath("Hitbox")
+damage = null
+attack_delta = null
 
 [node name="DustBuster_Mesh" parent="." instance=ExtResource("2_82gfv")]
 

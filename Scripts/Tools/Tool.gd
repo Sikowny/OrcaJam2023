@@ -14,6 +14,9 @@ var targets: Array[DirtyObject]
 var active = false
 var attack_cooldown: float = 1
 
+func _ready():
+	set_physics_process(false)
+
 func on_button_press():
 	pass
 	
