@@ -51,8 +51,13 @@ func handle_jump():
 		velocity.y = JUMP_VELOCITY
 		
 func handle_attack():
+	var pOffSet = facing + Vector3(0,1,0)
+	if Input.is_action_just_pressed("key_action1"):
+		create_hitbox("Dry", pOffSet)
 	if Input.is_action_just_pressed("key_action2"):
-		create_hitbox(facing + Vector3(0,1,0))
+		create_hitbox("Wet", pOffSet)
+	if Input.is_action_just_pressed("key_action3"):
+		create_hitbox("Goo", pOffSet)
 
 func handle_movement():
 	var direction := (transform.basis * Vector3(input_move.x, 0, input_move.y)).normalized()
@@ -72,7 +77,8 @@ func update_facing(direction):
 	facing = direction.normalized()
 	facing_ray.target_position = facing*4 #for debuging
 	
-func create_hitbox(positionOffset:Vector3 = Vector3(0,1,0)):
+func create_hitbox(type, positionOffset:Vector3 = Vector3(0,1,0)):
 	var new_hitbox = hitbox.instantiate()
-	new_hitbox.position = position + positionOffset
-	add_sibling(new_hitbox) # add this node to parent of the parent of player.
+	new_hitbox.position = positionOffset
+	new_hitbox.attack_type = type
+	add_child(new_hitbox) # add this node to player.

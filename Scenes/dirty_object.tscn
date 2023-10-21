@@ -1,20 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://bofgr2nebfao8"]
+[gd_scene load_steps=7 format=3 uid="uid://bofgr2nebfao8"]
+
+[ext_resource type="Script" path="res://Scripts/dirty_object.gd" id="1_dme4m"]
+[ext_resource type="Material" uid="uid://cp17poajdniy6" path="res://Assets/Materials/dirty_object_mat.tres" id="2_1os4t"]
+[ext_resource type="PackedScene" uid="uid://bt628kp1g55qp" path="res://Scenes/debug_text.tscn" id="2_u55ve"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cip70"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7idyi"]
-transparency = 1
-shading_mode = 0
-albedo_color = Color(0.513726, 0.254902, 0.0823529, 0.698039)
-
 [sub_resource type="SphereMesh" id="SphereMesh_s4hin"]
-material = SubResource("StandardMaterial3D_7idyi")
+resource_local_to_scene = true
+material = ExtResource("2_1os4t")
 
-[node name="dirty_object" type="Area3D"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_fk4qt"]
+viewport_path = NodePath("SubViewport")
+
+[node name="dirty_object" type="Area3D" groups=["dirty_things"]]
+script = ExtResource("1_dme4m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("SphereShape3D_cip70")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
 mesh = SubResource("SphereMesh_s4hin")
-skeleton = NodePath("../CollisionShape3D")
+
+[node name="debug_text" parent="." instance=ExtResource("2_u55ve")]
+texture = SubResource("ViewportTexture_fk4qt")

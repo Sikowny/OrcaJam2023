@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt628kp1g55qp"]
+
+[ext_resource type="Script" path="res://Scripts/debug_text.gd" id="1_fuhe1"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4gm20"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="SystemFont" id="SystemFont_tnn52"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4060p"]
+font = SubResource("SystemFont_tnn52")
+font_size = 64
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="debug_text" type="Sprite3D"]
+billboard = 1
+texture = SubResource("ViewportTexture_4gm20")
+script = ExtResource("1_fuhe1")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(128, 128)
+
+[node name="Label" type="Label" parent="SubViewport"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Test"
+label_settings = SubResource("LabelSettings_4060p")
+horizontal_alignment = 1
+vertical_alignment = 1
