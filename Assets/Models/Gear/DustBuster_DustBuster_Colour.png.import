@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgxeqy67n06yk"
-path.s3tc="res://.godot/imported/smoke_04.png-54442801404d9db85de880f6a0d8fb99.s3tc.ctex"
+uid="uid://cny5vih5v3eur"
+path.s3tc="res://.godot/imported/DustBuster_DustBuster_Colour.png-ff426ba66ddceda8f359471f2190b9be.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://Assets/Sprites/kenney_particle-pack/PNG (Black background)/smoke_04.png"
-dest_files=["res://.godot/imported/smoke_04.png-54442801404d9db85de880f6a0d8fb99.s3tc.ctex"]
+source_file="res://Assets/Models/Gear/DustBuster_DustBuster_Colour.png"
+dest_files=["res://.godot/imported/DustBuster_DustBuster_Colour.png-ff426ba66ddceda8f359471f2190b9be.s3tc.ctex"]
 
 [params]
 
