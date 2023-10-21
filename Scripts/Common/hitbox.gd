@@ -34,12 +34,14 @@ func _ready() -> void:
 
 
 #func _on_area_entered(area):
-#	#print("Area: " + str(area))
 #	if(area.is_in_group("dirty_things")):
+#		print("hit dirty area: " + area.dirty_type + " : " + str(area))
 #		if attack_type == area.dirty_type:
-#			print("clean Hit:" + str(area))
 #			area.hit_clean()
-			#queue_free()
+#			print("Clean Hit: hp:" + str(area.dirt_health))
+#			queue_free()
+#		else:
+#			print("Incorrect Clean Type")
 	
 	
 

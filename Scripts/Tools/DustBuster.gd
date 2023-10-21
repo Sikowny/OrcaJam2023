@@ -23,3 +23,4 @@ func on_button_release():
 	m_hitbox.set_active(false)
 	set_process(false)
 	set_physics_process(false)
+

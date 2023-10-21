@@ -26,7 +26,14 @@ func on_button_release():
 func _area_entered(area):
 	if(area.is_in_group("dirty_things")):
 		if attackType == area.dirty_type:
+			print("dirty area - IN RANGE: " + str(area.dirty_type) + " : " + str(area))
 			targets.append(area)
+
+func _on_area_exited(area):
+	if(area.is_in_group("dirty_things")):
+		if attackType == area.dirty_type:
+			print("dirty area - left range: " + str(area.dirty_type) + " : " + str(area))
+			targets.erase(area)
 
 func _physics_process(delta):
 	attack_cooldown -= delta
@@ -38,5 +45,6 @@ func _physics_process(delta):
 	for target in targets:
 		if target != null:
 			target.hit_clean(damage)
+			print("Clean Hit: hp:" + str(target.dirt_health))
 	
 	targets = targets.filter(func(target): return target != null)	
