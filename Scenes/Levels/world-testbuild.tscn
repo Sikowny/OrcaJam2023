@@ -1,0 +1,108 @@
+[gd_scene load_steps=21 format=3 uid="uid://bk1mq6b6i0oi5"]
+
+[ext_resource type="PackedScene" uid="uid://d4dgbxwfmsdgk" path="res://Scenes/geo_block.tscn" id="1_kaa24"]
+[ext_resource type="PackedScene" uid="uid://b4exshole0aqw" path="res://Scenes/player.tscn" id="1_npos1"]
+[ext_resource type="ArrayMesh" uid="uid://cbikbmnus3w58" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/bathroomCabinet.obj" id="3_6c6v0"]
+[ext_resource type="ArrayMesh" uid="uid://dxfky1dp7u4mh" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/bathroomCabinetDrawer.obj" id="4_qo6qm"]
+[ext_resource type="ArrayMesh" uid="uid://be27cfo8k1oqr" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/bear.obj" id="5_6h3tt"]
+[ext_resource type="ArrayMesh" uid="uid://cn753ebtdfeal" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/bedSingle.obj" id="6_wofo8"]
+[ext_resource type="ArrayMesh" uid="uid://dnds1kmcym131" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/benchCushion.obj" id="7_pgfu6"]
+[ext_resource type="ArrayMesh" uid="uid://bojc0ty78img0" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/chair.obj" id="8_2fpe5"]
+[ext_resource type="ArrayMesh" uid="uid://ctcxyynk7wfsk" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/computerKeyboard.obj" id="9_sbnuu"]
+[ext_resource type="ArrayMesh" uid="uid://8h4huchkyr3w" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/doorwayFront.obj" id="10_r1ag7"]
+[ext_resource type="ArrayMesh" uid="uid://pm5lfdiia2e3" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/kitchenFridge.obj" id="11_126g0"]
+[ext_resource type="ArrayMesh" uid="uid://bvt7wdrud6he7" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/laptop.obj" id="12_irfg4"]
+[ext_resource type="ArrayMesh" uid="uid://2lmrdbs7o2le" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/wallDoorway.obj" id="13_bdyck"]
+[ext_resource type="ArrayMesh" uid="uid://cy7sav4cj2pvh" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/wall.obj" id="14_ipfjb"]
+[ext_resource type="ArrayMesh" uid="uid://b6jpu4ykpxj5e" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/stairs.obj" id="15_ensj3"]
+[ext_resource type="ArrayMesh" uid="uid://c4opxdf1w33nh" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/plantSmall1.obj" id="16_c1nyw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id47p"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_a66tn"]
+sky_material = SubResource("ProceduralSkyMaterial_id47p")
+
+[sub_resource type="Environment" id="Environment_injp6"]
+background_mode = 2
+sky = SubResource("Sky_a66tn")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lqw86"]
+
+[node name="World" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_injp6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_npos1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="geo_block" parent="." instance=ExtResource("1_kaa24")]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
+
+[node name="BathroomCabinet" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 2.1476, 0.5, -1.06461)
+mesh = ExtResource("3_6c6v0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BathroomCabinet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.08512)
+shape = SubResource("BoxShape3D_lqw86")
+
+[node name="BathroomCabinetDrawer" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -0.88728, 0.5, -4.09445)
+mesh = ExtResource("4_qo6qm")
+
+[node name="Bear" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 2.5841, 2.81679, 0.674498)
+mesh = ExtResource("5_6h3tt")
+
+[node name="BedSingle" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 10.0082, 0.5, -3.34527)
+mesh = ExtResource("6_wofo8")
+
+[node name="BenchCushion" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 8.03897, 0.511167, -5.49438)
+mesh = ExtResource("7_pgfu6")
+
+[node name="Chair" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 1.2812, 0.5, -2.59087)
+mesh = ExtResource("8_2fpe5")
+
+[node name="ComputerKeyboard" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32608, 0.5, -3.75693)
+mesh = ExtResource("9_sbnuu")
+
+[node name="DoorwayFront" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 9.38348, 0.5, 10.3285)
+mesh = ExtResource("10_r1ag7")
+
+[node name="KitchenFridge" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 4.73757, 0.5, 3.55166)
+mesh = ExtResource("11_126g0")
+
+[node name="Laptop" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 8.1299, 1.56418, -2.42726)
+mesh = ExtResource("12_irfg4")
+
+[node name="WallDoorway" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 10.2436, 0.5, 10.4796)
+mesh = ExtResource("13_bdyck")
+
+[node name="Wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 14.2743, 0.5, 10.4983)
+mesh = ExtResource("14_ipfjb")
+
+[node name="Stairs" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 19.7739, 0.5, -3.97397)
+mesh = ExtResource("15_ensj3")
+
+[node name="PlantSmall1" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 11.2257, 0.593862, -5.30275)
+mesh = ExtResource("16_c1nyw")
