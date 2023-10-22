@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cgc2um7dp3xyq"]
+[gd_scene load_steps=21 format=3 uid="uid://cgc2um7dp3xyq"]
 
 [ext_resource type="PackedScene" uid="uid://b4exshole0aqw" path="res://Scenes/player.tscn" id="1_80hhf"]
 [ext_resource type="Script" path="res://Scenes/Levels/Tutorial_Level.gd" id="1_spu3o"]
@@ -30,6 +30,11 @@ sky = SubResource("Sky_a66tn")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="LabelSettings" id="LabelSettings_gqsfw"]
+font_size = 64
+outline_size = 12
+outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+
 [node name="World" type="Node"]
 script = ExtResource("1_spu3o")
 
@@ -60,11 +65,58 @@ transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10)
 [node name="geo_block5" parent="Geometry" instance=ExtResource("2_hhii2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 20, -15, 1, 0)
 
-[node name="Wet Things" type="Node" parent="."]
+[node name="Wet Things" type="Node3D" parent="."]
 
-[node name="Dry Things" type="Node" parent="."]
+[node name="desk" parent="Wet Things" instance=ExtResource("8_og8ef")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -5, 0.5, -2)
 
-[node name="Goo Things" type="Node" parent="."]
+[node name="DirtyableProp" parent="Wet Things/desk" instance=ExtResource("6_dx8r4")]
+start_dirty = true
+dirty_type = 1
+dirty_level = 2
+
+[node name="loungeSofa" parent="Wet Things" instance=ExtResource("10_vb251")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 5, 0.5, -3)
+
+[node name="DirtyableProp" parent="Wet Things/loungeSofa" instance=ExtResource("6_dx8r4")]
+start_dirty = true
+dirty_type = 1
+dirty_level = 2
+
+[node name="Dry Things" type="Node3D" parent="."]
+
+[node name="bedSingle" parent="Dry Things" instance=ExtResource("4_are77")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -13.7597, 0.500001, -3.05401)
+
+[node name="DirtyableProp" parent="Dry Things/bedSingle" instance=ExtResource("6_dx8r4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.687545, 0, -0.69153)
+start_dirty = true
+dirty_level = 1
+
+[node name="bookcaseClosedWide" parent="Dry Things" instance=ExtResource("6_s7pga")]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -12.6749, 0.499999, 1.55623)
+
+[node name="DirtyableProp" parent="Dry Things/bookcaseClosedWide" instance=ExtResource("6_dx8r4")]
+start_dirty = true
+dirty_level = 2
+
+[node name="Goo Things" type="Node3D" parent="."]
+
+[node name="bathtub" parent="Goo Things" instance=ExtResource("5_lg2ha")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 8, 0.5, 8)
+
+[node name="DirtyableProp" parent="Goo Things/bathtub" instance=ExtResource("6_dx8r4")]
+start_dirty = true
+dirty_type = 2
+dirty_level = 2
+
+[node name="toilet" parent="Goo Things" instance=ExtResource("12_w551d")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 12, 0.5, 2)
+
+[node name="DirtyableProp" parent="Goo Things/toilet" instance=ExtResource("6_dx8r4")]
+start_dirty = true
+dirty_type = 2
+dirty_level = 1
 
 [node name="All Things" type="Node" parent="."]
 
@@ -79,39 +131,31 @@ dirty_type = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6671, 1.5, 0.675014)
 dirty_type = 2
 
-[node name="bedSingle" parent="." instance=ExtResource("4_are77")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -13.7597, 0.500001, -3.05401)
-
-[node name="DirtyableProp" parent="bedSingle" instance=ExtResource("6_dx8r4")]
-start_dirty = true
-dirty_level = 1
-
-[node name="bathtub" parent="." instance=ExtResource("5_lg2ha")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 8, 0.5, 8)
-
-[node name="bookcaseClosedWide" parent="." instance=ExtResource("6_s7pga")]
-transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -12.6749, 0.499999, 1.55623)
-
 [node name="chair" parent="." instance=ExtResource("7_2u4b2")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -4, 0.5, -5)
-
-[node name="desk" parent="." instance=ExtResource("8_og8ef")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -5, 0.5, -2)
 
 [node name="dryer" parent="." instance=ExtResource("9_21ogd")]
 transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 13, 0.5, -4)
 
-[node name="loungeSofa" parent="." instance=ExtResource("10_vb251")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 5, 0.5, -3)
-
 [node name="table" parent="." instance=ExtResource("11_blu3t")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -10, 0.5, 8)
-
-[node name="toilet" parent="." instance=ExtResource("12_w551d")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 12, 0.5, 2)
 
 [node name="washerDryerStacked" parent="." instance=ExtResource("13_h8qd2")]
 transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 13, 0.5, -1)
 
 [node name="televisionVintage" parent="." instance=ExtResource("14_m40pg")]
 transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -7.31098, 1.90094, 6.74158)
+
+[node name="Tut_Win" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Tut_Win"]
+offset_right = 1271.0
+offset_bottom = 711.0
+
+[node name="Label" type="Label" parent="Tut_Win/MarginContainer"]
+layout_mode = 2
+text = "TUTORIAL COMPLETE!"
+label_settings = SubResource("LabelSettings_gqsfw")
+horizontal_alignment = 1
+vertical_alignment = 1
