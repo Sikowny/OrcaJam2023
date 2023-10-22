@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const FRICTION = 1.0
@@ -78,7 +77,7 @@ func handle_attack():
 		if tool2:
 			tool2.on_button_press()
 			return	
-	elif Input.is_action_just_pressed(InputMapConst.action2):
+	elif Input.is_action_just_released(InputMapConst.action2):
 #		print("tool 2 primary action released")
 		if tool2:
 			tool2.on_button_release()
