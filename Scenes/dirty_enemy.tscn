@@ -1,19 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0rav5q0sims2"]
+[gd_scene load_steps=8 format=3 uid="uid://d0rav5q0sims2"]
 
 [ext_resource type="Script" path="res://dirty_enemy.gd" id="1_egqhu"]
-[ext_resource type="PackedScene" path="res://Scenes/debug_text.tscn" id="2_3714p"]
-[ext_resource type="Material" uid="uid://du3w6lm3oixhu" path="res://Assets/Materials/dirty_enemy_mat.tres" id="2_r1h2f"]
+[ext_resource type="PackedScene" uid="uid://bt628kp1g55qp" path="res://Scenes/debug_text.tscn" id="2_3714p"]
+[ext_resource type="Material" path="res://Assets/Materials/dirty_enemy_mat.tres" id="2_r1h2f"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pk84q"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_5ugrm"]
 material = ExtResource("2_r1h2f")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0b7eh"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_q47bb"]
 viewport_path = NodePath("SubViewport")
 
-[node name="dirty_enemy" type="CharacterBody3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_02orm"]
+size = Vector3(6, 2, 6)
+
+[node name="dirty_enemy" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "vision")]
 script = ExtResource("1_egqhu")
+nav_agent = NodePath("NavigationAgent3D")
+vision = NodePath("VisionArea3D/VisionCollisionShape3D2")
+dirty_type = null
+dirt_health = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -25,8 +32,16 @@ skeleton = NodePath("../..")
 
 [node name="debug_text" parent="." instance=ExtResource("2_3714p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.884107, 0)
-texture = SubResource("ViewportTexture_0b7eh")
+texture = SubResource("ViewportTexture_q47bb")
 
 [node name="Facing" type="RayCast3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.07908, 0)
 target_position = Vector3(0, 0, 2)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="VisionArea3D" type="Area3D" parent="."]
+
+[node name="VisionCollisionShape3D2" type="CollisionShape3D" parent="VisionArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.501064, 3.015)
+shape = SubResource("BoxShape3D_02orm")

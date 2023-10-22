@@ -1,0 +1,77 @@
+[gd_scene load_steps=14 format=3 uid="uid://c8a22yjtlox5a"]
+
+[ext_resource type="PackedScene" uid="uid://b4exshole0aqw" path="res://Scenes/player.tscn" id="1_hnynk"]
+[ext_resource type="PackedScene" uid="uid://d4dgbxwfmsdgk" path="res://Scenes/geo_block.tscn" id="2_vl1y8"]
+[ext_resource type="PackedScene" uid="uid://bofgr2nebfao8" path="res://Scenes/dirty_object.tscn" id="3_48u4m"]
+[ext_resource type="Texture2D" uid="uid://dupjvmkri0xdi" path="res://Assets/Sprites/kenney_particle-pack/PNG (Black background)/dirt_03.png" id="4_uc31l"]
+[ext_resource type="PackedScene" uid="uid://fly74vblxumk" path="res://Assets/Models/kenney_furniture-kit/Models/GLTF format/washer.glb" id="5_ieo1a"]
+[ext_resource type="Script" path="res://Scripts/Common/DirtyableProp.gd" id="6_chgnc"]
+[ext_resource type="PackedScene" uid="uid://d0rav5q0sims2" path="res://Scenes/dirty_enemy.tscn" id="7_ml6d8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id47p"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_a66tn"]
+sky_material = SubResource("ProceduralSkyMaterial_id47p")
+
+[sub_resource type="Environment" id="Environment_injp6"]
+background_mode = 2
+sky = SubResource("Sky_a66tn")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_mglyd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gc00"]
+shading_mode = 0
+albedo_texture = ExtResource("4_uc31l")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8j66k"]
+
+[node name="World" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_injp6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_hnynk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 15, 0, 0, 0)
+navigation_mesh = SubResource("NavigationMesh_mglyd")
+
+[node name="geo_block" parent="NavigationRegion3D" instance=ExtResource("2_vl1y8")]
+
+[node name="dirty_object" parent="." instance=ExtResource("3_48u4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 1)
+
+[node name="dirty_object2" parent="." instance=ExtResource("3_48u4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.172877, 0.5, -3.77387)
+dirty_type = 1
+
+[node name="dirty_object3" parent="." instance=ExtResource("3_48u4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6671, 0.5, 0.675014)
+dirty_type = 2
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96046, 0, 3.3239)
+material_override = SubResource("StandardMaterial3D_0gc00")
+process_material = SubResource("ParticleProcessMaterial_8j66k")
+
+[node name="washer" parent="." instance=ExtResource("5_ieo1a")]
+transform = Transform3D(0.733953, 0, -3.93209, 0, 4, 0, 3.93209, 0, 0.733953, -7.45542, 0.5, 5.74596)
+
+[node name="DirtyableProp" type="CollisionShape3D" parent="washer"]
+script = ExtResource("6_chgnc")
+
+[node name="dirty_enemy" parent="." node_paths=PackedStringArray("nav_agent", "vision") instance=ExtResource("7_ml6d8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.64542)
+nav_agent = NodePath("")
+vision = NodePath("CollisionShape3D")
+dirty_type = 0
+dirt_health = 3

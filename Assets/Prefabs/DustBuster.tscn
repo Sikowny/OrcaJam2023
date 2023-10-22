@@ -43,7 +43,7 @@ m_hitbox = NodePath("Hitbox")
 [node name="DustBuster_Mesh" parent="." instance=ExtResource("2_82gfv")]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.76522)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -1.76522)
 material_override = SubResource("StandardMaterial3D_phu86")
 cast_shadow = 0
 lifetime = 0.66
@@ -59,6 +59,7 @@ attenuation = 0.535886
 
 [node name="Hitbox" parent="." instance=ExtResource("4_5h5lh")]
 transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 0, 0, -1.7651)
+visible = false
 
 [connection signal="area_entered" from="Hitbox" to="." method="_area_entered"]
 [connection signal="area_exited" from="Hitbox" to="." method="_on_area_exited"]

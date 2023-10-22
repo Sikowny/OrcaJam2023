@@ -5,6 +5,8 @@ const JUMP_VELOCITY = 4.5
 const FRICTION = 1.0
 const ACCELERATION = 1.0
 
+@export var nav_agent: NavigationAgent3D
+@export var vision: Area3D
 @export var dirty_type: AttackType.EAttackType = AttackType.EAttackType.dry
 @export var dirt_health: int = 3
 
@@ -12,7 +14,6 @@ const ACCELERATION = 1.0
 @onready var debug_text: Sprite3D = $debug_text
 @onready var mesh: MeshInstance3D = $CollisionShape3D/MeshInstance3D
 #@onready var dirty_object: Area3D = $dirty_object
-
 
 var dirty_object_ref = preload("res://Scenes/dirty_object.tscn")
 
@@ -22,9 +23,13 @@ var input_move: Vector2 = Vector2.ZERO;
 
 var facing: Vector3 = Vector3.ZERO;
 
+var m_target: Node3D
+var cur_offset: float
+
 func _ready() -> void:
 	# set up dirty object attached to this enemy
 	ready_dirty_obj()
+	
 	# debug info
 	debug_text.text = str(AttackType.EAttackType.keys()[dirty_type])
 	print(name + ":" + debug_text.text)
@@ -44,6 +49,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Get the input direction and handle the movement/deceleration.
 	handle_movement()
+	
 	
 
 	move_and_slide() #update player velocity / physics
@@ -101,3 +107,27 @@ func create_hitbox(type, positionOffset:Vector3 = Vector3(0,1,0)):
 
 func _on_dirty_object_is_cleaned() -> void:
 	queue_free()
+
+func _on_target_enter_vision(target: Node3D):
+	var target_offset = position.distance_to(target.position)
+	
+	if target.is_in_group("players"):
+		if m_target != null:
+			check_new_vis_distance(target, target_offset)
+		else:
+			m_target = target
+			cur_offset = target_offset
+			
+	elif m_target != null and m_target.is_in_group("players"):
+		return
+		
+	check_new_vis_distance(target, target_offset)
+	
+func check_new_vis_distance(target: Node3D, target_offset: float):
+	if target_offset < cur_offset:
+		m_target = target
+		cur_offset = target_offset
+	
+func _on_target_exit_vision(target: Node3D):
+	
+	pass
