@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://Scripts/Common/DirtyableProp.gd" id="1_n5ixj"]
 
-[node name="DirtyableProp" type="CollisionShape3D" groups=["dirtyable"]]
+[node name="DirtyableProp" type="Node3D" groups=["dirtyable"]]
 script = ExtResource("1_n5ixj")
