@@ -3,3 +3,33 @@
 [ext_resource type="PackedScene" uid="uid://cgc2um7dp3xyq" path="res://Scenes/Levels/world_brendansTest.tscn" id="1_ppgqi"]
 
 [node name="World" instance=ExtResource("1_ppgqi")]
+
+[node name="Node2D" type="Node2D" parent="geo_block" index="1"]
+
+[node name="Button" type="Button" parent="geo_block/Node2D" index="0"]
+offset_left = 535.0
+offset_top = 177.0
+offset_right = 696.0
+offset_bottom = 245.0
+scale = Vector2(5.56616, 4.95033)
+text = "Push Here!"
+
+[node name="Button2" type="Button" parent="geo_block/Node2D" index="1"]
+offset_left = 1242.0
+offset_top = 695.0
+offset_right = 1403.0
+offset_bottom = 763.0
+scale = Vector2(5.56616, 4.95033)
+text = "Button 2"
+
+[node name="MenuButton" type="MenuButton" parent="geo_block/Node2D" index="2"]
+offset_left = 3359.0
+offset_top = 1854.0
+offset_right = 3441.0
+offset_bottom = 1885.0
+scale = Vector2(35.7761, 37.0359)
+text = "Play now!"
+
+[node name="TextureButton" type="TextureButton" parent="geo_block/Node2D" index="3"]
+offset_right = 40.0
+offset_bottom = 40.0
