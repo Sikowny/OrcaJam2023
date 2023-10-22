@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cjxnim6hsp5qn"]
+[gd_scene load_steps=19 format=3 uid="uid://cjxnim6hsp5qn"]
 
 [ext_resource type="PackedScene" uid="uid://b4exshole0aqw" path="res://Scenes/player.tscn" id="1_m84y4"]
 [ext_resource type="PackedScene" uid="uid://d4dgbxwfmsdgk" path="res://Scenes/geo_block.tscn" id="2_u1gr1"]
@@ -14,6 +14,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bjgjvu724weau" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/shower.obj" id="11_ugwue"]
 [ext_resource type="ArrayMesh" uid="uid://fb506hvq03l2" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/toilet.obj" id="12_ywndm"]
 [ext_resource type="ArrayMesh" uid="uid://8h4huchkyr3w" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/doorwayFront.obj" id="14_8jq3s"]
+[ext_resource type="ArrayMesh" uid="uid://dho18soqo276g" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/deskCorner.obj" id="15_h5f7t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id47p"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -62,12 +63,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="PlayerLight" type="OmniLight3D" parent="Character/CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.06348, 0)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="Lights" type="Node" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 visible = false
 shadow_enabled = true
-
-[node name="Lights" type="Node" parent="."]
 
 [node name="Walls" type="Node" parent="."]
 
@@ -378,6 +379,11 @@ skeleton = NodePath("../../..")
 transform = Transform3D(2.98122e-09, 0, 0.25, 0, 0.25, 0, -0.25, 0, 2.98122e-09, -0.139784, -8.76664, -0.291839)
 dirty_type = 2
 
+[node name="DoorwayFront" type="MeshInstance3D" parent="Furniture/Bathroom"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -9.91126, 0.5, -14.3152)
+mesh = ExtResource("14_8jq3s")
+skeleton = NodePath("../../..")
+
 [node name="TelevisionModern" type="MeshInstance3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -2.75504, 0.5, 8.82335)
 mesh = ExtResource("7_h3sm1")
@@ -392,6 +398,13 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 10.1552, 2.41439, -0.0805469)
 light_color = Color(0, 1, 1, 1)
 light_energy = 0.743
 
-[node name="DoorwayFront" type="MeshInstance3D" parent="."]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -9.91126, 0.5, -14.3152)
-mesh = ExtResource("14_8jq3s")
+[node name="StreamingRoom" type="Node" parent="."]
+
+[node name="DeskCorner" type="MeshInstance3D" parent="StreamingRoom"]
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, 19.5133, 0.500002, -15.2594)
+mesh = ExtResource("15_h5f7t")
+skeleton = NodePath("../..")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="StreamingRoom"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 21.8234, 7.57751, -18.1718)
+spot_range = 17.632
