@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://cjxnim6hsp5qn"]
+
+[ext_resource type="PackedScene" uid="uid://b4exshole0aqw" path="res://Scenes/player.tscn" id="1_m84y4"]
+[ext_resource type="PackedScene" uid="uid://d4dgbxwfmsdgk" path="res://Scenes/geo_block.tscn" id="2_u1gr1"]
+[ext_resource type="PackedScene" uid="uid://bofgr2nebfao8" path="res://Scenes/dirty_object.tscn" id="3_sr23x"]
+[ext_resource type="PackedScene" uid="uid://d0rav5q0sims2" path="res://Scenes/dirty_enemy.tscn" id="4_rlujl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id47p"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_a66tn"]
+sky_material = SubResource("ProceduralSkyMaterial_id47p")
+
+[sub_resource type="Environment" id="Environment_injp6"]
+background_mode = 2
+sky = SubResource("Sky_a66tn")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="World" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_injp6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_m84y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="geo_block" parent="." instance=ExtResource("2_u1gr1")]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 15, 0, 0, 0)
+
+[node name="dirty_object" parent="." instance=ExtResource("3_sr23x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 1)
+
+[node name="dirty_object2" parent="." instance=ExtResource("3_sr23x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.172877, 0.5, -3.77387)
+dirty_type = 1
+
+[node name="dirty_object3" parent="." instance=ExtResource("3_sr23x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6671, 0.5, 0.675014)
+dirty_type = 2
+
+[node name="dirty_enemy" parent="." instance=ExtResource("4_rlujl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.54558, 0.5, -1.72962)
