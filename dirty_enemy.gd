@@ -11,7 +11,7 @@ const ACCELERATION = 1.0
 @onready var facing_ray: RayCast3D = $Facing
 @onready var debug_text: Sprite3D = $debug_text
 @onready var mesh: MeshInstance3D = $CollisionShape3D/MeshInstance3D
-@onready var dirty_object: Area3D = $dirty_object
+#@onready var dirty_object: Area3D = $dirty_object
 
 
 var dirty_object_ref = preload("res://Scenes/dirty_object.tscn")
@@ -50,8 +50,11 @@ func _physics_process(delta: float) -> void:
 	
 	
 func ready_dirty_obj():
+	var dirty_object = dirty_object_ref.instantiate()
 	dirty_object.dirt_health = dirt_health
 	dirty_object.dirty_type = dirty_type
+	dirty_object.is_cleaned.connect(_on_dirty_object_is_cleaned)
+	add_child(dirty_object)
 	#new_dirty_object.scale = scale# + Vector3(1,1,1)
 
 func get_move_input():
