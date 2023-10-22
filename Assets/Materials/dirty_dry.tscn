@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2nxn08707fu4"]
+
+[ext_resource type="Material" uid="uid://el70qajsak7s" path="res://Assets/Materials/dirty_dry.tres" id="1_jdq2q"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_rhd2p"]
+
+[node name="Node3D" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_rhd2p")
+surface_material_override/0 = ExtResource("1_jdq2q")

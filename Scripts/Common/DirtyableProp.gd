@@ -19,6 +19,7 @@ var spawn_cooldown: float
 var parentObj = null
 
 func _ready():
+	edit_prop_material()
 	$MeshInstance3D.visible = false
 	if get_parent() != null:
 		parentObj = get_parent()
@@ -73,4 +74,20 @@ func _on_dirty_object_is_cleaned():
 	dirty_obj = null
 	dirty_level = 0
 	set_physics_process(false)
+	edit_prop_material(true)
+	
+func edit_prop_material(reset = false):
+	var prop = get_parent()
+	if(!prop): return
+	if !(prop is MeshInstance3D): return
+	var matCount = prop.get_surface_override_material_count()
+	var mat = null
+	if(!reset):
+		match(str(AttackType.EAttackType.keys()[dirty_type])):
+			"dry": mat = preload("res://Assets/Materials/dirty_dry.tres")
+			"wet": mat = preload("res://Assets/Materials/dirty_wet.tres")
+			"goo": mat = preload("res://Assets/Materials/dirty_goo.tres")
+	for i in range(matCount):
+		prop.set_surface_override_material(i,mat)
+		
 	
