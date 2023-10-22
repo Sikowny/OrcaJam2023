@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cjxnim6hsp5qn"]
+[gd_scene load_steps=36 format=3 uid="uid://cjxnim6hsp5qn"]
 
 [ext_resource type="PackedScene" uid="uid://b4exshole0aqw" path="res://Scenes/player.tscn" id="1_m84y4"]
 [ext_resource type="PackedScene" uid="uid://d4dgbxwfmsdgk" path="res://Scenes/geo_block.tscn" id="2_u1gr1"]
@@ -29,6 +29,8 @@
 [ext_resource type="ArrayMesh" uid="uid://uarubfgjc80u" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/kitchenCabinetCornerInner.obj" id="28_hbevm"]
 [ext_resource type="ArrayMesh" uid="uid://pm5lfdiia2e3" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/kitchenFridge.obj" id="29_n2kf0"]
 [ext_resource type="ArrayMesh" uid="uid://cyhf57y3x11a3" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/kitchenMicrowave.obj" id="30_fjplw"]
+[ext_resource type="ArrayMesh" uid="uid://btdfg5b408v6x" path="res://Assets/Models/kenney_food-kit/Models/OBJ format/apple.obj" id="30_vcnyd"]
+[ext_resource type="AudioStream" uid="uid://b2wmc4asr34cx" path="res://Assets/Audio/SFX/ThemeSong.mp3" id="31_xxn0c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id47p"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -57,18 +59,18 @@ environment = SubResource("Environment_injp6")
 [node name="Objects" type="Node" parent="."]
 
 [node name="dirty_object" parent="Objects" instance=ExtResource("3_sr23x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3827, 1, 1)
 
 [node name="dirty_object2" parent="Objects" instance=ExtResource("3_sr23x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.172877, 0.5, -3.77387)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6117, 0.5, -3.77387)
 dirty_type = 1
 
 [node name="dirty_object3" parent="Objects" instance=ExtResource("3_sr23x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6671, 0.5, 0.675014)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.461, 0.5, 0.675014)
 dirty_type = 2
 
 [node name="dirty_enemy" parent="Objects" instance=ExtResource("4_rlujl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.54558, 0.5, -1.72962)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3013, 0.5, -1.72962)
 
 [node name="Character" type="Node" parent="."]
 
@@ -78,6 +80,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="PlayerLight" type="OmniLight3D" parent="Character/CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.06348, 0)
 light_energy = 1.61
+
+[node name="Popup" type="Popup" parent="Character/CharacterBody3D"]
+mode = 3
+title = "TUTORIAL"
+position = Vector2i(623, 274)
+transparent = true
 
 [node name="Lights" type="Node" parent="."]
 
@@ -101,13 +109,8 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -14.8712, 2.41025, -2.88194)
 mesh = ExtResource("8_q5p3c")
 skeleton = NodePath("../..")
 
-[node name="Popup" type="Popup" parent="."]
-title = "Hai!!"
-initial_position = 1
-transparent = true
-
 [node name="dirty_enemy" parent="." instance=ExtResource("4_rlujl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0956, 0.5, -4.91488)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.880371, 0.5, -18.0362)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_us33p")
@@ -197,6 +200,10 @@ mesh = ExtResource("23_2hjg4")
 skeleton = NodePath("../../..")
 script = ExtResource("24_ogop8")
 
+[node name="dirty_object4" parent="NavigationRegion3D/Bathroom" instance=ExtResource("3_sr23x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6569, 0.5, -19.14)
+dirty_type = 1
+
 [node name="Bedroom" type="Node" parent="NavigationRegion3D"]
 
 [node name="BedDouble" type="MeshInstance3D" parent="NavigationRegion3D/Bedroom"]
@@ -215,9 +222,10 @@ light_energy = 7.626
 spot_range = 11.805
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="NavigationRegion3D/Bedroom"]
-transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -19.1141, 8.27191, -10.6221)
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -19.5468, 8.27191, -7.47223)
 light_energy = 7.626
-spot_range = 11.805
+spot_range = 20.554
+spot_attenuation = 0.812252
 
 [node name="CeilingFan" type="MeshInstance3D" parent="NavigationRegion3D/Bedroom"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -5.42187, 6.01585, -16.3777)
@@ -309,6 +317,11 @@ spot_range = 11.805
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 1.81526, 10.6116, -13.0804)
 light_energy = 7.626
 spot_range = 17.542
+
+[node name="Apple" type="MeshInstance3D" parent="NavigationRegion3D/StreamingRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.30936, 2.09514, -16.1162)
+mesh = ExtResource("30_vcnyd")
+skeleton = NodePath("../../..")
 
 [node name="TEST OBJECTS" type="Node" parent="NavigationRegion3D"]
 
@@ -460,11 +473,6 @@ transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 5.1420
 mesh = ExtResource("5_3ihwo")
 skeleton = NodePath("../../..")
 
-[node name="Wall34" type="MeshInstance3D" parent="NavigationRegion3D/Walls"]
-transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 6.43577, 0.5, 9.83079)
-mesh = ExtResource("5_3ihwo")
-skeleton = NodePath("../../..")
-
 [node name="Wall37" type="MeshInstance3D" parent="NavigationRegion3D/Walls"]
 transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -21.5641, 0.5, -1.76733)
 mesh = ExtResource("5_3ihwo")
@@ -555,6 +563,21 @@ transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -16.10
 mesh = ExtResource("5_3ihwo")
 skeleton = NodePath("../../..")
 
+[node name="DoorwayFront2" type="MeshInstance3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 4.86425, 0.5, -4.70723)
+mesh = ExtResource("14_8jq3s")
+skeleton = NodePath("../../..")
+
+[node name="Wall65" type="MeshInstance3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -2.55123, 0.482838, -4.47883)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../../..")
+
+[node name="Wall66" type="MeshInstance3D" parent="NavigationRegion3D/Walls"]
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -1.04067, 0.482838, -4.47883)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../../..")
+
 [node name="Wall54" type="MeshInstance3D" parent="NavigationRegion3D/Walls"]
 transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -6.45994, 0.482838, -11.9646)
 mesh = ExtResource("5_3ihwo")
@@ -592,3 +615,8 @@ skeleton = NodePath("../../..")
 
 [node name="geo_block" parent="NavigationRegion3D" instance=ExtResource("2_u1gr1")]
 transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource("31_xxn0c")
+volume_db = 5.622
