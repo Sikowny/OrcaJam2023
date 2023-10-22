@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cjxnim6hsp5qn"]
+[gd_scene load_steps=28 format=3 uid="uid://cjxnim6hsp5qn"]
 
 [ext_resource type="PackedScene" uid="uid://b4exshole0aqw" path="res://Scenes/player.tscn" id="1_m84y4"]
 [ext_resource type="PackedScene" uid="uid://d4dgbxwfmsdgk" path="res://Scenes/geo_block.tscn" id="2_u1gr1"]
@@ -20,6 +20,10 @@
 [ext_resource type="ArrayMesh" uid="uid://bcq6sg7cndoll" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/loungeSofa.obj" id="18_at2fl"]
 [ext_resource type="ArrayMesh" uid="uid://d4at7vf23mfb7" path="res://Assets/Models/kenney_food-kit/Models/OBJ format/bacon.obj" id="19_k7hal"]
 [ext_resource type="ArrayMesh" uid="uid://c8kllq8ib4o6v" path="res://Assets/Models/kenney_food-kit/Models/OBJ format/banana.obj" id="20_8tu3v"]
+[ext_resource type="ArrayMesh" uid="uid://cxx1in5gh2yx" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/bedDouble.obj" id="21_pnykk"]
+[ext_resource type="ArrayMesh" uid="uid://cb46t18hlxgfk" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/bookcaseClosedWide.obj" id="22_kd2yb"]
+[ext_resource type="ArrayMesh" uid="uid://cbm2fta0mo1t5" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/ceilingFan.obj" id="23_2hjg4"]
+[ext_resource type="Script" path="res://Scenes/Levels/CeilingFan.gd" id="24_ogop8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id47p"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -389,6 +393,12 @@ transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -9.91126, 0.5, -14.3152)
 mesh = ExtResource("14_8jq3s")
 skeleton = NodePath("../../..")
 
+[node name="CeilingFan2" type="MeshInstance3D" parent="Furniture/Bathroom"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -13.5531, 6.01585, -16.8805)
+mesh = ExtResource("23_2hjg4")
+skeleton = NodePath("../../..")
+script = ExtResource("24_ogop8")
+
 [node name="TelevisionModern" type="MeshInstance3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -2.75504, 0.5, 8.82335)
 mesh = ExtResource("7_h3sm1")
@@ -464,10 +474,43 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 20.9595, 0.5, -9.23509)
 mesh = ExtResource("18_at2fl")
 skeleton = NodePath("../..")
 
-[node name="Bacon" type="MeshInstance3D" parent="."]
+[node name="CeilingFan3" type="MeshInstance3D" parent="StreamingRoom"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 20.6261, 6.01585, -13.1565)
+mesh = ExtResource("23_2hjg4")
+skeleton = NodePath("../..")
+script = ExtResource("24_ogop8")
+
+[node name="Food" type="Node" parent="."]
+
+[node name="Bacon" type="MeshInstance3D" parent="Food"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.499, 2.05241, -15.9333)
 mesh = ExtResource("19_k7hal")
+skeleton = NodePath("../..")
 
-[node name="Banana" type="MeshInstance3D" parent="."]
+[node name="Banana" type="MeshInstance3D" parent="Food"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6243, 2.0566, -16.9172)
 mesh = ExtResource("20_8tu3v")
+skeleton = NodePath("../..")
+
+[node name="Bedroom" type="Node" parent="."]
+
+[node name="BedDouble" type="MeshInstance3D" parent="Bedroom"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 0.30496, 0.5, -18.183)
+mesh = ExtResource("21_pnykk")
+skeleton = NodePath("../..")
+
+[node name="BookcaseClosedWide" type="MeshInstance3D" parent="Bedroom"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 4.03805, 0.5, -19.7048)
+mesh = ExtResource("22_kd2yb")
+skeleton = NodePath("../..")
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Bedroom"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 2.53993, 8.27191, -16.7516)
+light_energy = 7.626
+spot_range = 11.805
+
+[node name="CeilingFan" type="MeshInstance3D" parent="Bedroom"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 2.6693, 6.01585, -16.4214)
+mesh = ExtResource("23_2hjg4")
+skeleton = NodePath("../..")
+script = ExtResource("24_ogop8")
