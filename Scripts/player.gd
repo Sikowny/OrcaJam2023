@@ -15,6 +15,8 @@ const InputMapConst = preload("res://Scripts/InputMapConst.gd")
 #preload another object to instanciate it later
 var hitbox = preload("res://Scenes/hitbox.tscn")
 var p_dustbuster = preload("res://Assets/Prefabs/DustBuster.tscn")
+var p_spongesword = preload("res://Assets/Prefabs/SpongeSword.tscn")
+var p_spraycleaner = preload("res://Assets/Prefabs/SprayCleaner.tscn")
 
 #set up vars
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -35,6 +37,9 @@ func _ready() -> void:
 	
 	tool1 = p_dustbuster.instantiate()
 	add_child(tool1)
+	#tool2 = p_spongesword.instantiate()
+	tool2 = p_spraycleaner.instantiate()
+	add_child(tool2)
 
 func _physics_process(delta: float) -> void:
 	

@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://bucss5vbg6n7t"]
+
+[ext_resource type="Script" path="res://Scripts/Tools/SprayCleaner.gd" id="1_t3eos"]
+[ext_resource type="PackedScene" uid="uid://3njipexced6b" path="res://Assets/Models/Gear/sprayCleaner.glb" id="2_6gasj"]
+[ext_resource type="Texture2D" uid="uid://ceg5p5dofyn2a" path="res://Assets/Sprites/kenney_particle-pack/PNG (Black background)/light_03.png" id="3_ktm83"]
+[ext_resource type="PackedScene" uid="uid://b3pgm0qpp5mb4" path="res://Scenes/hitbox.tscn" id="4_ah2by"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_phu86"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0.717647, 0.898039, 0.196078)
+albedo_texture = ExtResource("3_ktm83")
+disable_receive_shadows = true
+
+[sub_resource type="Curve" id="Curve_xnja7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0421052), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0gssr"]
+curve = SubResource("Curve_xnja7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8gr7m"]
+resource_local_to_scene = true
+direction = Vector3(0, 0, -1)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 4.0
+initial_velocity_max = 6.0
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_0gssr")
+
+[sub_resource type="SphereMesh" id="SphereMesh_qjkf2"]
+
+[node name="SprayCleaner" type="Node3D" node_paths=PackedStringArray("particles", "m_hitbox")]
+script = ExtResource("1_t3eos")
+particles = NodePath("sprayCleaner/GPUParticles3D")
+attackType = 2
+m_hitbox = NodePath("Hitbox")
+
+[node name="sprayCleaner" parent="." instance=ExtResource("2_6gasj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.483291)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="sprayCleaner"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.607978, -0.855262)
+material_override = SubResource("StandardMaterial3D_phu86")
+cast_shadow = 0
+lifetime = 0.8
+speed_scale = 1.5
+randomness = 0.24
+visibility_aabb = AABB(-2.63039, -2.57616, -1.83282, 5.26077, 5.15232, 3.66563)
+process_material = SubResource("ParticleProcessMaterial_8gr7m")
+draw_pass_1 = SubResource("SphereMesh_qjkf2")
+
+[node name="Hitbox" parent="." instance=ExtResource("4_ah2by")]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 0, 0, -1.7651)
+
+[connection signal="area_entered" from="Hitbox" to="." method="_area_entered"]
+[connection signal="area_exited" from="Hitbox" to="." method="_on_area_exited"]

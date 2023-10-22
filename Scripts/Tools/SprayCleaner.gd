@@ -1,7 +1,7 @@
-class_name SpongeSword
+class_name SprayCleaner
 extends "res://Scripts/Tools/Tool.gd"
 
-@onready var particles: GPUParticles3D = $sponge_sword/GPUParticles3D
+@export var particles: GPUParticles3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,5 +23,4 @@ func on_button_release():
 	m_hitbox.set_active(false)
 	set_process(false)
 	set_physics_process(false)
-
 

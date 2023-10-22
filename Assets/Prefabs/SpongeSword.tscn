@@ -38,8 +38,10 @@ scale_curve = SubResource("CurveTexture_a6uei")
 [sub_resource type="QuadMesh" id="QuadMesh_i3p6k"]
 size = Vector2(0.5, 0.5)
 
-[node name="SpongeSword" type="Node3D"]
+[node name="SpongeSword" type="Node3D" node_paths=PackedStringArray("m_hitbox")]
 script = ExtResource("1_b5mcu")
+attackType = 1
+m_hitbox = NodePath("Hitbox")
 
 [node name="sponge_sword" parent="." instance=ExtResource("2_clsa1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.59967)
