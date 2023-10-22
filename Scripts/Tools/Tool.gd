@@ -16,6 +16,7 @@ var attack_cooldown: float = 1
 
 func _ready():
 	set_physics_process(false)
+	attack_cooldown = 0
 
 func on_button_press():
 	pass
