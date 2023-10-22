@@ -153,4 +153,5 @@ func take_damage(damage_source: DirtyEnemy):
 	
 	if cur_hp <= 0:
 		print("dead")
-		sig_dead.emit()
+		#sig_dead.emit()
+		get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
