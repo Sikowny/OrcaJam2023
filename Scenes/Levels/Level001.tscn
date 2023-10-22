@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cjxnim6hsp5qn"]
+[gd_scene load_steps=20 format=3 uid="uid://cjxnim6hsp5qn"]
 
 [ext_resource type="PackedScene" uid="uid://b4exshole0aqw" path="res://Scenes/player.tscn" id="1_m84y4"]
 [ext_resource type="PackedScene" uid="uid://d4dgbxwfmsdgk" path="res://Scenes/geo_block.tscn" id="2_u1gr1"]
@@ -15,6 +15,7 @@
 [ext_resource type="ArrayMesh" uid="uid://fb506hvq03l2" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/toilet.obj" id="12_ywndm"]
 [ext_resource type="ArrayMesh" uid="uid://8h4huchkyr3w" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/doorwayFront.obj" id="14_8jq3s"]
 [ext_resource type="ArrayMesh" uid="uid://dho18soqo276g" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/deskCorner.obj" id="15_h5f7t"]
+[ext_resource type="ArrayMesh" uid="uid://c1l78qfyrsq3o" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/floorFull.obj" id="16_u72th"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id47p"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -406,5 +407,21 @@ mesh = ExtResource("15_h5f7t")
 skeleton = NodePath("../..")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="StreamingRoom"]
-transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 21.8234, 7.57751, -18.1718)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 21.8234, 7.57751, -18.1718)
 spot_range = 17.632
+
+[node name="FloorFull" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 23.5788, 0.358318, -19.7811)
+mesh = ExtResource("16_u72th")
+
+[node name="FloorFull2" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 23.5788, 0.358318, -16.0222)
+mesh = ExtResource("16_u72th")
+
+[node name="FloorFull3" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 19.9725, 0.358318, -16.0222)
+mesh = ExtResource("16_u72th")
+
+[node name="FloorFull4" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 19.9591, 0.310308, -20.0192)
+mesh = ExtResource("16_u72th")
