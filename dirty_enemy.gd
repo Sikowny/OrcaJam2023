@@ -26,11 +26,16 @@ var facing: Vector3 = Vector3.ZERO;
 var m_target: Node3D
 var cur_offset: float
 
+var targets = {}
+var m_target_is_player: bool = false
+
 func _ready() -> void:
-	# set up dirty object attached to this enemy
+	get_children()
 	ready_dirty_obj()
+	set_debug_info()
 	
-	# debug info
+	
+func set_debug_info():
 	debug_text.text = str(AttackType.EAttackType.keys()[dirty_type])
 	print(name + ":" + debug_text.text)
 	match debug_text.text:
@@ -38,23 +43,23 @@ func _ready() -> void:
 		"wet": mesh.mesh.material.albedo_color = Color(0.3,0.4,0.8,1)
 		"goo": mesh.mesh.material.albedo_color = Color(0.3,0.8,0.3,1)
 	pass
-
+	
 func _physics_process(delta: float) -> void:
 	
 	# Add the gravity.
 	handle_gravity(delta)
 	handle_jump()
 	handle_attack()
+	
 	get_move_input()
 	
 	# Get the input direction and handle the movement/deceleration.
 	handle_movement()
-	
-	
 
 	move_and_slide() #update player velocity / physics
 	
 	
+# set up dirty object attached to this enemy
 func ready_dirty_obj():
 	var dirty_object = dirty_object_ref.instantiate()
 	dirty_object.dirt_health = dirt_health
@@ -64,38 +69,51 @@ func ready_dirty_obj():
 	#new_dirty_object.scale = scale# + Vector3(1,1,1)
 
 func get_move_input():
-	#input_move = 
-	pass
+	for t in targets.values():
+		update_cur_target(t)
+		
+	if m_target == null:
+		print("target is null")
+		set_target(null, 100, false)
+		return
 	
+			
 func handle_jump():
 	#if jump and is_on_floor():
 		#velocity.y = JUMP_VELOCITY
 	pass
+	
 		
 func handle_attack():
 	pass
+	
 
 func handle_movement():
-	#var direction := (transform.basis * Vector3(input_move.x, 0, input_move.y)).normalized()
-	var direction = Vector3.ZERO
-	update_facing(direction)
-	if direction:
-		velocity.x = move_toward(velocity.x, direction.x * SPEED, ACCELERATION)
-		velocity.z = move_toward(velocity.z, direction.z * SPEED, ACCELERATION)
+	var desired_velocity = nav_agent.get_next_path_position()
+	desired_velocity = (desired_velocity - global_position).normalized()
+#
+	update_facing(desired_velocity)
+	
+	desired_velocity *= SPEED
+
+	if desired_velocity:
+		velocity.x = move_toward(velocity.x, desired_velocity.x , ACCELERATION)
+		velocity.z = move_toward(velocity.z, desired_velocity.z * SPEED, ACCELERATION)
 	else:
 		velocity.x = move_toward(velocity.x, 0, FRICTION)
 		velocity.z = move_toward(velocity.z, 0, FRICTION)
 		
+	velocity.y = 0
+		
+		
 func handle_gravity(delta):
 	if not is_on_floor(): velocity.y -= gravity * delta
 	
+	
 func update_facing(direction):
 	if direction == Vector3.ZERO: return;
-	facing = direction.normalized()
 	facing_ray.target_position = facing*2 #for debuging
-	
-	#parented camera makes this not a good idea at the moment
-	#transform = transform.rotated(Vector3.UP, Vector3.FORWARD.dot(direction))
+
 	
 func create_hitbox(type, positionOffset:Vector3 = Vector3(0,1,0)):
 	var new_hitbox = hitbox.instantiate()
@@ -104,30 +122,75 @@ func create_hitbox(type, positionOffset:Vector3 = Vector3(0,1,0)):
 	add_child(new_hitbox) # add this node to player.
 
 
-
 func _on_dirty_object_is_cleaned() -> void:
 	queue_free()
 
-func _on_target_enter_vision(target: Node3D):
+	
+func update_cur_target(target: Node3D):
 	var target_offset = position.distance_to(target.position)
+	var target_is_player = target.is_in_group("player")
 	
-	if target.is_in_group("players"):
-		if m_target != null:
-			check_new_vis_distance(target, target_offset)
-		else:
-			m_target = target
-			cur_offset = target_offset
-			
-	elif m_target != null and m_target.is_in_group("players"):
+	if m_target == null:
+		set_target(target, target_offset, target_is_player)
 		return
-		
-	check_new_vis_distance(target, target_offset)
 	
-func check_new_vis_distance(target: Node3D, target_offset: float):
+	if m_target_is_player and target_is_player == false:
+		nav_agent.target_position = m_target.position
+		return
+	
 	if target_offset < cur_offset:
-		m_target = target
-		cur_offset = target_offset
+		set_target(target, target_offset, target_is_player)
 	
-func _on_target_exit_vision(target: Node3D):
+		
+func set_target(target: Node3D, offset: float, target_is_player: bool):
+	m_target = target
+	cur_offset = offset
+	m_target_is_player = target_is_player
 	
+	if m_target == null:
+		var x = randf_range(-2,2)
+		var y = randf_range(-2,2)
+		var z = randf_range(-2,2)
+		var pos = Vector3(x,y,z)
+		nav_agent.target_position = pos
+		print("target: null, position: {p}".format({"p": pos}))
+	else:
+		nav_agent.target_position = target.position
+	
+
+func _on_vision_area_3d_body_entered(entered):
+	if entered.is_in_group("dirtyable") == false:
+		return
+	
+	if !targets.has(entered.get_instance_id()):
+		targets[entered.get_instance_id()] = entered
+		
+
+func _on_vision_area_3d_body_exited(leaving):
+	if targets.find_key(leaving.get_instance_id()):
+		targets.erase(leaving.get_instance_id())
+
+
+func _on_target_reached():
+#	print("target reached")
 	pass
+	
+	
+func _on_target_not_reachable():
+#	print("target not reachable")
+	pass
+	
+	
+func _on_nav_finished():
+#	print("on nav finished")
+	m_target = null
+	cur_offset = 100
+	
+func _on_path_changed():
+	#print("path changed")
+	pass
+	
+func _on_velocity_computed(safe_velocity: Vector3):
+#	print("safe_velocity: {sv}".format({"sv": safe_velocity}))
+	pass
+

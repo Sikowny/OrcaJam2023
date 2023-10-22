@@ -12,6 +12,7 @@ var spawn_cooldown: float
 func _ready():
 	dirty_level = 0 if m_dirty_enemy == null else max(1, dirty_level)
 	spawn_cooldown = randf_range(0, spawn_timer)
+	set_physics_process(false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):

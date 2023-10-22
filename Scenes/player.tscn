@@ -8,7 +8,7 @@
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_go117"]
 
-[node name="player" type="CharacterBody3D"]
+[node name="player" type="CharacterBody3D" groups=["dirtyable"]]
 script = ExtResource("1_lkaus")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

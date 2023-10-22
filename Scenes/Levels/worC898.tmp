@@ -1,0 +1,117 @@
+[gd_scene load_steps=20 format=3 uid="uid://c8a22yjtlox5a"]
+
+[ext_resource type="PackedScene" uid="uid://b4exshole0aqw" path="res://Scenes/player.tscn" id="1_hnynk"]
+[ext_resource type="PackedScene" uid="uid://d4dgbxwfmsdgk" path="res://Scenes/geo_block.tscn" id="2_vl1y8"]
+[ext_resource type="Texture2D" uid="uid://dupjvmkri0xdi" path="res://Assets/Sprites/kenney_particle-pack/PNG (Black background)/dirt_03.png" id="4_uc31l"]
+[ext_resource type="PackedScene" uid="uid://fly74vblxumk" path="res://Assets/Models/kenney_furniture-kit/Models/GLTF format/washer.glb" id="5_ieo1a"]
+[ext_resource type="PackedScene" uid="uid://nitrdaj011yh" path="res://Scenes/dirtyable_prop.tscn" id="5_qd34w"]
+[ext_resource type="Script" path="res://dirty_enemy.gd" id="6_xb3fg"]
+[ext_resource type="Material" path="res://Assets/Materials/dirty_enemy_mat.tres" id="7_h62nd"]
+[ext_resource type="PackedScene" uid="uid://bt628kp1g55qp" path="res://Scenes/debug_text.tscn" id="8_rl7sm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id47p"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_a66tn"]
+sky_material = SubResource("ProceduralSkyMaterial_id47p")
+
+[sub_resource type="Environment" id="Environment_injp6"]
+background_mode = 2
+sky = SubResource("Sky_a66tn")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_mglyd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gc00"]
+shading_mode = 0
+albedo_texture = ExtResource("4_uc31l")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8j66k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tn8jm"]
+size = Vector3(0.41078, 0.536736, 0.386828)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pk84q"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5ugrm"]
+material = ExtResource("7_h62nd")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ke44g"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_02orm"]
+size = Vector3(6, 2, 6)
+
+[node name="World" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_injp6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_hnynk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 15, 0, 0, 0)
+navigation_mesh = SubResource("NavigationMesh_mglyd")
+
+[node name="geo_block" parent="NavigationRegion3D" instance=ExtResource("2_vl1y8")]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96046, 0, 3.3239)
+material_override = SubResource("StandardMaterial3D_0gc00")
+process_material = SubResource("ParticleProcessMaterial_8j66k")
+
+[node name="washer" parent="." instance=ExtResource("5_ieo1a")]
+transform = Transform3D(0.733953, 0, -3.93209, 0, 4, 0, 3.93209, 0, 0.733953, -7.45542, 0.5, 5.74596)
+
+[node name="DirtyableProp" parent="washer" instance=ExtResource("5_qd34w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.192448, 0.221182, -0.177549)
+shape = SubResource("BoxShape3D_tn8jm")
+
+[node name="dirty_enemy" type="CharacterBody3D" parent="." node_paths=PackedStringArray("nav_agent", "vision") groups=["enemy"]]
+transform = Transform3D(-0.999978, 0, 0.00664968, 0, 1, 0, -0.00664968, 0, -0.999978, 0, 0.730149, 2.53825)
+script = ExtResource("6_xb3fg")
+nav_agent = NodePath("NavigationAgent3D")
+vision = NodePath("VisionArea3D")
+dirty_type = null
+dirt_health = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dirty_enemy" groups=["enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_pk84q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="dirty_enemy/CollisionShape3D" groups=["enemy"]]
+mesh = SubResource("SphereMesh_5ugrm")
+skeleton = NodePath("../..")
+
+[node name="debug_text" parent="dirty_enemy" groups=["enemy"] instance=ExtResource("8_rl7sm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.884107, 0)
+texture = SubResource("ViewportTexture_ke44g")
+
+[node name="Facing" type="RayCast3D" parent="dirty_enemy" groups=["enemy"]]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.07908, 0)
+target_position = Vector3(0, 0, 2)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="dirty_enemy" groups=["enemy"]]
+path_desired_distance = 0.1
+target_desired_distance = 0.1
+path_max_distance = 10.01
+
+[node name="VisionArea3D" type="Area3D" parent="dirty_enemy" groups=["enemy"]]
+
+[node name="VisionCollisionShape3D2" type="CollisionShape3D" parent="dirty_enemy/VisionArea3D" groups=["enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.501064, 3.015)
+shape = SubResource("BoxShape3D_02orm")
+
+[connection signal="navigation_finished" from="dirty_enemy/NavigationAgent3D" to="dirty_enemy" method="_on_nav_finished"]
+[connection signal="path_changed" from="dirty_enemy/NavigationAgent3D" to="dirty_enemy" method="_on_path_changed"]
+[connection signal="target_reached" from="dirty_enemy/NavigationAgent3D" to="dirty_enemy" method="_on_target_reached"]
+[connection signal="velocity_computed" from="dirty_enemy/NavigationAgent3D" to="dirty_enemy" method="_on_velocity_computed"]
+[connection signal="body_entered" from="dirty_enemy/VisionArea3D" to="dirty_enemy" method="_on_vision_area_3d_body_entered" flags=18]
+[connection signal="body_exited" from="dirty_enemy/VisionArea3D" to="dirty_enemy" method="_on_vision_area_3d_body_exited" flags=18]

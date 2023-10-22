@@ -19,6 +19,11 @@ var lifeTime = 120;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("dirty_things")
+	set_debug_text()
+	pass
+	#reparent($"../..")
+	
+func set_debug_text():
 	debug_text.text = str(AttackType.EAttackType.keys()[dirty_type])
 	print(name + ":" + debug_text.text)
 	match debug_text.text:
@@ -28,8 +33,6 @@ func _ready() -> void:
 			mesh.mesh.material.albedo_color = Color(0.3,0.5,0.6,0.8)
 		"goo": 
 			mesh.mesh.material.albedo_color = Color(0.45,0.6,0.3,0.8)
-	pass
-	#reparent($"../..")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

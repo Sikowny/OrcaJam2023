@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://c8a22yjtlox5a"]
+[gd_scene load_steps=13 format=3 uid="uid://c8a22yjtlox5a"]
 
 [ext_resource type="PackedScene" uid="uid://b4exshole0aqw" path="res://Scenes/player.tscn" id="1_hnynk"]
 [ext_resource type="PackedScene" uid="uid://d4dgbxwfmsdgk" path="res://Scenes/geo_block.tscn" id="2_vl1y8"]
-[ext_resource type="PackedScene" uid="uid://bofgr2nebfao8" path="res://Scenes/dirty_object.tscn" id="3_48u4m"]
 [ext_resource type="Texture2D" uid="uid://dupjvmkri0xdi" path="res://Assets/Sprites/kenney_particle-pack/PNG (Black background)/dirt_03.png" id="4_uc31l"]
 [ext_resource type="PackedScene" uid="uid://fly74vblxumk" path="res://Assets/Models/kenney_furniture-kit/Models/GLTF format/washer.glb" id="5_ieo1a"]
 [ext_resource type="Script" path="res://Scripts/Common/DirtyableProp.gd" id="6_chgnc"]
@@ -47,17 +46,6 @@ navigation_mesh = SubResource("NavigationMesh_mglyd")
 
 [node name="geo_block" parent="NavigationRegion3D" instance=ExtResource("2_vl1y8")]
 
-[node name="dirty_object" parent="." instance=ExtResource("3_48u4m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 1)
-
-[node name="dirty_object2" parent="." instance=ExtResource("3_48u4m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.172877, 0.5, -3.77387)
-dirty_type = 1
-
-[node name="dirty_object3" parent="." instance=ExtResource("3_48u4m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6671, 0.5, 0.675014)
-dirty_type = 2
-
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96046, 0, 3.3239)
 material_override = SubResource("StandardMaterial3D_0gc00")
@@ -69,9 +57,8 @@ transform = Transform3D(0.733953, 0, -3.93209, 0, 4, 0, 3.93209, 0, 0.733953, -7
 [node name="DirtyableProp" type="CollisionShape3D" parent="washer"]
 script = ExtResource("6_chgnc")
 
-[node name="dirty_enemy" parent="." node_paths=PackedStringArray("nav_agent", "vision") instance=ExtResource("7_ml6d8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.64542)
-nav_agent = NodePath("")
+[node name="dirty_enemy" parent="." node_paths=PackedStringArray("vision") instance=ExtResource("7_ml6d8")]
+transform = Transform3D(-0.999978, 0, 0.00664968, 0, 1, 0, -0.00664968, 0, -0.999978, 0, 0.730149, 2.53825)
 vision = NodePath("CollisionShape3D")
 dirty_type = 0
 dirt_health = 3

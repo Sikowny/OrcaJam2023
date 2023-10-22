@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="OrcaJam2023"
-run/main_scene="res://Scenes/Levels/world_brendansTest.tscn"
+run/main_scene="res://Scenes/Levels/Level001.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 

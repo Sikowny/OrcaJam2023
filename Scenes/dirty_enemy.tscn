@@ -9,39 +9,44 @@
 [sub_resource type="SphereMesh" id="SphereMesh_5ugrm"]
 material = ExtResource("2_r1h2f")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_q47bb"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_37wqf"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_02orm"]
 size = Vector3(6, 2, 6)
 
-[node name="dirty_enemy" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "vision")]
+[node name="dirty_enemy" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "vision") groups=["enemy"]]
 script = ExtResource("1_egqhu")
 nav_agent = NodePath("NavigationAgent3D")
 vision = NodePath("VisionArea3D/VisionCollisionShape3D2")
-dirty_type = null
-dirt_health = null
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_pk84q")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" groups=["enemy"]]
 mesh = SubResource("SphereMesh_5ugrm")
 skeleton = NodePath("../..")
 
-[node name="debug_text" parent="." instance=ExtResource("2_3714p")]
+[node name="debug_text" parent="." groups=["enemy"] instance=ExtResource("2_3714p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.884107, 0)
-texture = SubResource("ViewportTexture_q47bb")
+texture = SubResource("ViewportTexture_37wqf")
 
-[node name="Facing" type="RayCast3D" parent="."]
+[node name="Facing" type="RayCast3D" parent="." groups=["enemy"]]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.07908, 0)
 target_position = Vector3(0, 0, 2)
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." groups=["enemy"]]
+path_desired_distance = 0.5
+target_desired_distance = 0.1
+path_max_distance = 10.01
 
-[node name="VisionArea3D" type="Area3D" parent="."]
+[node name="VisionArea3D" type="Area3D" parent="." groups=["enemy"]]
 
-[node name="VisionCollisionShape3D2" type="CollisionShape3D" parent="VisionArea3D"]
+[node name="VisionCollisionShape3D2" type="CollisionShape3D" parent="VisionArea3D" groups=["enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.501064, 3.015)
 shape = SubResource("BoxShape3D_02orm")
+
+[connection signal="waypoint_reached" from="NavigationAgent3D" to="." method="_on_target_reached"]
+[connection signal="body_entered" from="VisionArea3D" to="." method="_on_vision_area_3d_body_entered"]
+[connection signal="body_exited" from="VisionArea3D" to="." method="_on_vision_area_3d_body_exited"]
