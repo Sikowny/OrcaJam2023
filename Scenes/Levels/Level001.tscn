@@ -11,7 +11,7 @@
 [ext_resource type="ArrayMesh" uid="uid://demjv236ivnyd" path="res://Assets/Models/kenney_food-kit/Models/OBJ format/avocado.obj" id="8_q5p3c"]
 [ext_resource type="ArrayMesh" uid="uid://dxfky1dp7u4mh" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/bathroomCabinetDrawer.obj" id="9_ap5hc"]
 [ext_resource type="ArrayMesh" uid="uid://cwals4kh0kkdu" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/bathroomMirror.obj" id="10_ouw13"]
-[ext_resource type="ArrayMesh" uid="uid://btugl0tuvenm0" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/bathroomSink.obj" id="11_rqb37"]
+[ext_resource type="ArrayMesh" uid="uid://bjgjvu724weau" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/shower.obj" id="11_ugwue"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id47p"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -274,6 +274,31 @@ transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -21.39
 mesh = ExtResource("5_3ihwo")
 skeleton = NodePath("../..")
 
+[node name="Wall47" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -16.7678, 0.482838, -19.7395)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall48" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -16.7678, 0.482838, -18.2344)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall51" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -16.7678, 0.482838, -14.0868)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall49" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -9.17309, 0.482838, -18.2344)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall50" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -9.17309, 0.482838, -19.8925)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
 [node name="Wall46" type="MeshInstance3D" parent="Walls"]
 transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -21.6841, 0.5, 9.83079)
 mesh = ExtResource("5_3ihwo")
@@ -307,24 +332,32 @@ skeleton = NodePath("../../..")
 [node name="Bathroom" type="Node" parent="Furniture"]
 
 [node name="BathroomCabinet" type="MeshInstance3D" parent="Furniture/Bathroom"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -14.2237, 0.499999, 0.32675)
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -14.4238, 2.37972, -19.1131)
 mesh = ExtResource("8_131ym")
 skeleton = NodePath("../../..")
 
 [node name="BathroomCabinetDrawer" type="MeshInstance3D" parent="Furniture/Bathroom"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -12.5989, 0.5, -3.2069)
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -12.4474, 0.5, -17.742)
 mesh = ExtResource("9_ap5hc")
 skeleton = NodePath("../../..")
 
+[node name="dirty_object4" parent="Furniture/Bathroom/BathroomCabinetDrawer" instance=ExtResource("3_sr23x")]
+transform = Transform3D(-0.25, 0, 2.18557e-08, 0, 0.25, 0, -2.18557e-08, 0, -0.25, -1.06028, 0, -2.9711)
+dirty_type = 1
+
 [node name="BathroomMirror" type="MeshInstance3D" parent="Furniture/Bathroom"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -12.8487, 2.44729, -1.23264)
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -12.2124, 2.44729, -19.5176)
 mesh = ExtResource("10_ouw13")
 skeleton = NodePath("../../..")
 
-[node name="BathroomSink" type="MeshInstance3D" parent="Furniture/Bathroom"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -16.1564, 0.5, -1.28412)
-mesh = ExtResource("11_rqb37")
+[node name="Shower" type="MeshInstance3D" parent="Furniture/Bathroom"]
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -13.8287, 0.5, -17.4696)
+mesh = ExtResource("11_ugwue")
 skeleton = NodePath("../../..")
+
+[node name="dirty_object4" parent="Furniture/Bathroom/Shower" instance=ExtResource("3_sr23x")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.278728, 0, 0.248103)
+dirty_type = 2
 
 [node name="TelevisionModern" type="MeshInstance3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -2.75504, 0.5, 8.82335)
