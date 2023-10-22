@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cjxnim6hsp5qn"]
+[gd_scene load_steps=24 format=3 uid="uid://cjxnim6hsp5qn"]
 
 [ext_resource type="PackedScene" uid="uid://b4exshole0aqw" path="res://Scenes/player.tscn" id="1_m84y4"]
 [ext_resource type="PackedScene" uid="uid://d4dgbxwfmsdgk" path="res://Scenes/geo_block.tscn" id="2_u1gr1"]
@@ -16,6 +16,10 @@
 [ext_resource type="ArrayMesh" uid="uid://8h4huchkyr3w" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/doorwayFront.obj" id="14_8jq3s"]
 [ext_resource type="ArrayMesh" uid="uid://dho18soqo276g" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/deskCorner.obj" id="15_h5f7t"]
 [ext_resource type="ArrayMesh" uid="uid://c1l78qfyrsq3o" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/floorFull.obj" id="16_u72th"]
+[ext_resource type="ArrayMesh" uid="uid://bvt7wdrud6he7" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/laptop.obj" id="17_rg40j"]
+[ext_resource type="ArrayMesh" uid="uid://bcq6sg7cndoll" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/loungeSofa.obj" id="18_at2fl"]
+[ext_resource type="ArrayMesh" uid="uid://d4at7vf23mfb7" path="res://Assets/Models/kenney_food-kit/Models/OBJ format/bacon.obj" id="19_k7hal"]
+[ext_resource type="ArrayMesh" uid="uid://c8kllq8ib4o6v" path="res://Assets/Models/kenney_food-kit/Models/OBJ format/banana.obj" id="20_8tu3v"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id47p"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -294,12 +298,12 @@ mesh = ExtResource("5_3ihwo")
 skeleton = NodePath("../..")
 
 [node name="Wall49" type="MeshInstance3D" parent="Walls"]
-transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -9.17309, 0.482838, -18.2344)
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -10.1699, 0.482838, -18.2344)
 mesh = ExtResource("5_3ihwo")
 skeleton = NodePath("../..")
 
 [node name="Wall50" type="MeshInstance3D" parent="Walls"]
-transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -9.17309, 0.482838, -19.8925)
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -10.1699, 0.482838, -19.8925)
 mesh = ExtResource("5_3ihwo")
 skeleton = NodePath("../..")
 
@@ -407,21 +411,63 @@ mesh = ExtResource("15_h5f7t")
 skeleton = NodePath("../..")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="StreamingRoom"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 21.8234, 7.57751, -18.1718)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 21.8234, 8.27443, -15.5412)
 spot_range = 17.632
 
-[node name="FloorFull" type="MeshInstance3D" parent="."]
+[node name="FloorFull" type="MeshInstance3D" parent="StreamingRoom"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 23.5788, 0.358318, -19.7811)
 mesh = ExtResource("16_u72th")
+skeleton = NodePath("../..")
 
-[node name="FloorFull2" type="MeshInstance3D" parent="."]
+[node name="FloorFull2" type="MeshInstance3D" parent="StreamingRoom"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 23.5788, 0.358318, -16.0222)
 mesh = ExtResource("16_u72th")
+skeleton = NodePath("../..")
 
-[node name="FloorFull3" type="MeshInstance3D" parent="."]
+[node name="FloorFull3" type="MeshInstance3D" parent="StreamingRoom"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 19.9725, 0.358318, -16.0222)
 mesh = ExtResource("16_u72th")
+skeleton = NodePath("../..")
 
-[node name="FloorFull4" type="MeshInstance3D" parent="."]
+[node name="FloorFull4" type="MeshInstance3D" parent="StreamingRoom"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 19.9591, 0.310308, -20.0192)
 mesh = ExtResource("16_u72th")
+skeleton = NodePath("../..")
+
+[node name="FloorFull5" type="MeshInstance3D" parent="StreamingRoom"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 23.6803, 0.431106, -12.3012)
+mesh = ExtResource("16_u72th")
+skeleton = NodePath("../..")
+
+[node name="FloorFull6" type="MeshInstance3D" parent="StreamingRoom"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 23.6803, 0.431106, -8.54231)
+mesh = ExtResource("16_u72th")
+skeleton = NodePath("../..")
+
+[node name="FloorFull7" type="MeshInstance3D" parent="StreamingRoom"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 20.074, 0.431106, -8.54231)
+mesh = ExtResource("16_u72th")
+skeleton = NodePath("../..")
+
+[node name="FloorFull8" type="MeshInstance3D" parent="StreamingRoom"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 20.0605, 0.383096, -12.5393)
+mesh = ExtResource("16_u72th")
+skeleton = NodePath("../..")
+
+[node name="Laptop" type="MeshInstance3D" parent="StreamingRoom"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 22.2943, 2.05616, -17.4907)
+mesh = ExtResource("17_rg40j")
+skeleton = NodePath("../..")
+
+[node name="LoungeSofa" type="MeshInstance3D" parent="StreamingRoom"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 20.9595, 0.5, -9.23509)
+mesh = ExtResource("18_at2fl")
+skeleton = NodePath("../..")
+
+[node name="Bacon" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.499, 2.05241, -15.9333)
+mesh = ExtResource("19_k7hal")
+
+[node name="Banana" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6243, 2.0566, -16.9172)
+mesh = ExtResource("20_8tu3v")
