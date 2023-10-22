@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://nitrdaj011yh"]
+[gd_scene load_steps=4 format=3 uid="uid://nitrdaj011yh"]
 
 [ext_resource type="Script" path="res://Scripts/Common/DirtyableProp.gd" id="1_n5ixj"]
+[ext_resource type="Material" uid="uid://cp17poajdniy6" path="res://Assets/Materials/dirty_object_mat.tres" id="2_n85b0"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_xrwb0"]
+resource_local_to_scene = true
+material = ExtResource("2_n85b0")
 
 [node name="DirtyableProp" type="Node3D" groups=["dirtyable"]]
 script = ExtResource("1_n5ixj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_xrwb0")

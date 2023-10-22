@@ -9,7 +9,7 @@ var dirty_obj = null
 
 @export var start_dirty: bool = false
 @export var dirty_type: AttackType.EAttackType = AttackType.EAttackType.dry
-@export var dirty_level: int = 0
+@export var dirty_level: int = 1
 
 @export var m_dirty_enemy: dirty_enemy
 
@@ -19,6 +19,7 @@ var spawn_cooldown: float
 var parentObj = null
 
 func _ready():
+	$MeshInstance3D.visible = false
 	if get_parent() != null:
 		parentObj = get_parent()
 	if start_dirty:
@@ -26,7 +27,7 @@ func _ready():
 		dirty_obj.dirty_type = dirty_type
 		dirty_obj.dirt_health = dirty_level
 		dirty_obj.is_cleaned.connect(_on_dirty_object_is_cleaned)
-		dirty_obj.scale = Vector3(1,1,1)
+		#dirty_obj.scale = Vector3(1,1,1) * dirty_obj_scale
 		add_child(dirty_obj)
 	
 	spawn_cooldown = randf_range(0, spawn_timer)

@@ -91,7 +91,6 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -13.7597, 0.500001, -3.05401)
 [node name="DirtyableProp" parent="Dry Things/bedSingle" instance=ExtResource("6_dx8r4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.687545, 0, -0.69153)
 start_dirty = true
-dirty_level = 1
 
 [node name="bookcaseClosedWide" parent="Dry Things" instance=ExtResource("6_s7pga")]
 transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -12.6749, 0.499999, 1.55623)
@@ -116,7 +115,6 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 12, 0.5, 2)
 [node name="DirtyableProp" parent="Goo Things/toilet" instance=ExtResource("6_dx8r4")]
 start_dirty = true
 dirty_type = 2
-dirty_level = 1
 
 [node name="All Things" type="Node" parent="."]
 

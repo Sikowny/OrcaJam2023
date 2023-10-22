@@ -17,7 +17,6 @@ viewport_path = NodePath("SubViewport")
 script = ExtResource("1_dme4m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("SphereShape3D_cip70")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
