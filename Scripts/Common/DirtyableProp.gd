@@ -16,12 +16,17 @@ var dirty_obj = null
 @export var spawn_timer: float = 3
 var spawn_cooldown: float
 
+var parentObj = null
+
 func _ready():
+	if get_parent() != null:
+		parentObj = get_parent()
 	if start_dirty:
 		dirty_obj = dirty_obj_ref.instantiate()
 		dirty_obj.dirty_type = dirty_type
 		dirty_obj.dirt_health = dirty_level
 		dirty_obj.is_cleaned.connect(_on_dirty_object_is_cleaned)
+		dirty_obj.scale = Vector3(1,1,1)
 		add_child(dirty_obj)
 	
 	spawn_cooldown = randf_range(0, spawn_timer)

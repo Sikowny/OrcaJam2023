@@ -45,6 +45,7 @@ func _physics_process(delta):
 	
 	for target in targets:
 		if target != null:
+			if !target.is_processing(): return
 			target.hit_clean(damage)
 			print("Clean Hit: hp:" + str(target.dirt_health))
 	
