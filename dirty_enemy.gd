@@ -1,3 +1,4 @@
+class_name DirtyEnemy
 extends CharacterBody3D
 
 const SPEED = 5.0
@@ -8,7 +9,9 @@ const ACCELERATION = 1.0
 @export var nav_agent: NavigationAgent3D
 @export var vision: Area3D
 @export var dirty_type: AttackType.EAttackType = AttackType.EAttackType.dry
-@export var dirt_health: int = 3
+@export var dirt_health: float = 3
+@export var damage: float = 1
+@export var attack_speed: float = 1
 
 @onready var facing_ray: RayCast3D = $Facing
 @onready var debug_text: Sprite3D = $debug_text
@@ -26,8 +29,12 @@ var facing: Vector3 = Vector3.ZERO;
 var m_target: Node3D
 var cur_offset: float
 
-var targets = {}
+var vis_targets = {}
 var m_target_is_player: bool = false
+
+var atk_targets = {}
+var atk_cooldown: float = 0
+
 
 func _ready() -> void:
 	get_children()
@@ -46,10 +53,11 @@ func set_debug_info():
 	
 func _physics_process(delta: float) -> void:
 	
+	handle_attack(delta)
+	
 	# Add the gravity.
 	handle_gravity(delta)
 	handle_jump()
-	handle_attack()
 	
 	get_move_input()
 	
@@ -69,7 +77,7 @@ func ready_dirty_obj():
 	#new_dirty_object.scale = scale# + Vector3(1,1,1)
 
 func get_move_input():
-	for t in targets.values():
+	for t in vis_targets.values():
 		update_cur_target(t)
 		
 	if m_target == null:
@@ -84,10 +92,16 @@ func handle_jump():
 	pass
 	
 		
-func handle_attack():
-	pass
+func handle_attack(delta: float):
+	atk_cooldown -= delta
+	if atk_cooldown > 0:
+		return
+		
+	atk_cooldown = attack_speed + atk_cooldown
 	
-
+	for atk_target in atk_targets.values():
+		atk_target.take_damage(self)
+	
 func handle_movement():
 	var desired_velocity = nav_agent.get_next_path_position()
 	desired_velocity = (desired_velocity - global_position).normalized()
@@ -127,7 +141,7 @@ func _on_dirty_object_is_cleaned() -> void:
 
 	
 func update_cur_target(target: Node3D):
-	var target_offset = position.distance_to(target.position)
+	var target_offset = position.distance_to(target.global_position)
 	var target_is_player = target.is_in_group("player")
 	
 	if m_target == null:
@@ -135,7 +149,7 @@ func update_cur_target(target: Node3D):
 		return
 	
 	if m_target_is_player and target_is_player == false:
-		nav_agent.target_position = m_target.position
+		nav_agent.target_position = m_target.global_position
 		return
 	
 	if target_offset < cur_offset:
@@ -155,20 +169,20 @@ func set_target(target: Node3D, offset: float, target_is_player: bool):
 		nav_agent.target_position = pos
 		#print("target: null, position: {p}".format({"p": pos}))
 	else:
-		nav_agent.target_position = target.position
+		nav_agent.target_position = target.global_position
 	
 
 func _on_vision_area_3d_body_entered(entered):
 	if entered.is_in_group("dirtyable") == false:
 		return
 	
-	if !targets.has(entered.get_instance_id()):
-		targets[entered.get_instance_id()] = entered
+	if !vis_targets.has(entered.get_instance_id()):
+		vis_targets[entered.get_instance_id()] = entered
 		
 
 func _on_vision_area_3d_body_exited(leaving):
-	if targets.find_key(leaving.get_instance_id()):
-		targets.erase(leaving.get_instance_id())
+	if vis_targets.find_key(leaving.get_instance_id()):
+		vis_targets.erase(leaving.get_instance_id())
 
 
 func _on_target_reached():
@@ -187,11 +201,41 @@ func _on_nav_finished():
 	m_target = null
 	cur_offset = 100
 	
+	
 func _on_path_changed():
 	#print("path changed")
 	pass
 	
+	
 func _on_velocity_computed(safe_velocity: Vector3):
 #	print("safe_velocity: {sv}".format({"sv": safe_velocity}))
 	pass
+	
 
+func _on_obj_enter_dirty_area(entered: Node3D):
+	if entered.is_in_group("dirtyable") == false:
+		return
+
+	if entered is Player:
+		var p = entered as Player
+		if !atk_targets.has(entered.get_instance_id()):
+			atk_targets[entered.get_instance_id()] = p
+	elif entered is DirtyableProp:
+		var dp = entered as DirtyableProp
+		if dp.try_dirty(self):
+			disable()
+	
+	
+func _on_obj_exit_dirty_area(leaving: Node3D):
+	print("leaving " + str(leaving.get_instance_id()))
+	
+	if atk_targets.has(leaving.get_instance_id()):
+		atk_targets.erase(leaving.get_instance_id())
+
+
+func disable():
+	print("disable")
+	visible = false
+	set_process(false)
+	set_physics_process(false)
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0rav5q0sims2"]
+[gd_scene load_steps=9 format=3 uid="uid://d0rav5q0sims2"]
 
 [ext_resource type="Script" path="res://dirty_enemy.gd" id="1_egqhu"]
 [ext_resource type="PackedScene" uid="uid://bt628kp1g55qp" path="res://Scenes/debug_text.tscn" id="2_3714p"]
@@ -9,11 +9,14 @@
 [sub_resource type="SphereMesh" id="SphereMesh_5ugrm"]
 material = ExtResource("2_r1h2f")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_37wqf"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_jcfxp"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_02orm"]
 size = Vector3(6, 2, 6)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0thr4"]
+radius = 1.05772
 
 [node name="dirty_enemy" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "vision") groups=["enemy"]]
 script = ExtResource("1_egqhu")
@@ -30,7 +33,7 @@ skeleton = NodePath("../..")
 
 [node name="debug_text" parent="." groups=["enemy"] instance=ExtResource("2_3714p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.884107, 0)
-texture = SubResource("ViewportTexture_37wqf")
+texture = SubResource("ViewportTexture_jcfxp")
 
 [node name="Facing" type="RayCast3D" parent="." groups=["enemy"]]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.07908, 0)
@@ -47,6 +50,13 @@ path_max_distance = 10.01
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.501064, 3.015)
 shape = SubResource("BoxShape3D_02orm")
 
+[node name="DirtyArea3D" type="Area3D" parent="."]
+
+[node name="DirtyCollisionShape3D" type="CollisionShape3D" parent="DirtyArea3D"]
+shape = SubResource("SphereShape3D_0thr4")
+
 [connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_nav_finished"]
 [connection signal="body_entered" from="VisionArea3D" to="." method="_on_vision_area_3d_body_entered"]
 [connection signal="body_exited" from="VisionArea3D" to="." method="_on_vision_area_3d_body_exited"]
+[connection signal="body_entered" from="DirtyArea3D" to="." method="_on_obj_enter_dirty_area"]
+[connection signal="body_exited" from="DirtyArea3D" to="." method="_on_obj_exit_dirty_area"]

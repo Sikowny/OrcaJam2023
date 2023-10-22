@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody3D
 
 const SPEED = 5.0
@@ -5,12 +6,18 @@ const JUMP_VELOCITY = 4.5
 const FRICTION = 1.0
 const ACCELERATION = 1.0
 
+#const DirtyEnemy = preload("res://dirty_enemy.gd")
 const Tool = preload("res://Scripts/Tools/Tool.gd")
 const InputMapConst = preload("res://Scripts/InputMapConst.gd")
+
+signal sig_dead
+
+@export var max_hp: float = 5
 
 #grab refences to connected nodes on this Scene/Object
 @onready var spring_arm: SpringArm3D = $SpringArm3D
 @onready var facing_ray: RayCast3D = $Facing
+@onready var cur_hp: float = max_hp
 
 #preload another object to instanciate it later
 var hitbox = preload("res://Scenes/hitbox.tscn")
@@ -140,3 +147,10 @@ func create_hitbox(type, positionOffset:Vector3 = Vector3(0,1,0)):
 	new_hitbox.position = positionOffset
 	new_hitbox.attack_type = type
 	add_child(new_hitbox) # add this node to player.
+	
+func take_damage(damage_source: DirtyEnemy):
+	cur_hp -= damage_source.damage
+	
+	if cur_hp <= 0:
+		print("dead")
+		sig_dead.emit()
