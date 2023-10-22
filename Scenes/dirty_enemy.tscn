@@ -47,6 +47,6 @@ path_max_distance = 10.01
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.501064, 3.015)
 shape = SubResource("BoxShape3D_02orm")
 
-[connection signal="waypoint_reached" from="NavigationAgent3D" to="." method="_on_target_reached"]
+[connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_nav_finished"]
 [connection signal="body_entered" from="VisionArea3D" to="." method="_on_vision_area_3d_body_entered"]
 [connection signal="body_exited" from="VisionArea3D" to="." method="_on_vision_area_3d_body_exited"]
