@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0rav5q0sims2"]
+
+[ext_resource type="Script" path="res://dirty_enemy.gd" id="1_egqhu"]
+[ext_resource type="PackedScene" path="res://Scenes/debug_text.tscn" id="2_3714p"]
+[ext_resource type="Material" uid="uid://du3w6lm3oixhu" path="res://Assets/Materials/dirty_enemy_mat.tres" id="2_r1h2f"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pk84q"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5ugrm"]
+material = ExtResource("2_r1h2f")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_i83ju"]
+viewport_path = NodePath("SubViewport")
+
+[node name="dirty_enemy" type="CharacterBody3D"]
+script = ExtResource("1_egqhu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_pk84q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("SphereMesh_5ugrm")
+skeleton = NodePath("../..")
+
+[node name="debug_text" parent="." instance=ExtResource("2_3714p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.884107, 0)
+texture = SubResource("ViewportTexture_i83ju")
+
+[node name="Facing" type="RayCast3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.07908, 0)
+target_position = Vector3(0, 0, 2)
