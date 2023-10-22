@@ -73,7 +73,7 @@ func get_move_input():
 		update_cur_target(t)
 		
 	if m_target == null:
-		print("target is null")
+		#print("target is null")
 		set_target(null, 100, false)
 		return
 	
@@ -151,9 +151,9 @@ func set_target(target: Node3D, offset: float, target_is_player: bool):
 		var x = randf_range(-2,2)
 		var y = randf_range(-2,2)
 		var z = randf_range(-2,2)
-		var pos = Vector3(x,y,z)
+		var pos = Vector3(x,y,z) + global_position
 		nav_agent.target_position = pos
-		print("target: null, position: {p}".format({"p": pos}))
+		#print("target: null, position: {p}".format({"p": pos}))
 	else:
 		nav_agent.target_position = target.position
 	
@@ -172,7 +172,8 @@ func _on_vision_area_3d_body_exited(leaving):
 
 
 func _on_target_reached():
-#	print("target reached")
+	if m_target != null:
+		print("reached target {t}".format({"t": m_target.name}))
 	pass
 	
 	
