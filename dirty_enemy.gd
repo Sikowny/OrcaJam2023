@@ -1,7 +1,6 @@
 class_name DirtyEnemy
 extends CharacterBody3D
 
-const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const FRICTION = 1.0
 const ACCELERATION = 1.0
@@ -12,6 +11,7 @@ const ACCELERATION = 1.0
 @export var dirt_health: float = 3
 @export var damage: float = 1
 @export var attack_speed: float = 1
+@export var speed: float = 5.0
 
 @onready var facing_ray: RayCast3D = $Facing
 @onready var debug_text: Sprite3D = $debug_text
@@ -108,11 +108,11 @@ func handle_movement():
 #
 	update_facing(desired_velocity)
 	
-	desired_velocity *= SPEED
+	desired_velocity *= speed
 
 	if desired_velocity:
 		velocity.x = move_toward(velocity.x, desired_velocity.x , ACCELERATION)
-		velocity.z = move_toward(velocity.z, desired_velocity.z * SPEED, ACCELERATION)
+		velocity.z = move_toward(velocity.z, desired_velocity.z * speed, ACCELERATION)
 	else:
 		velocity.x = move_toward(velocity.x, 0, FRICTION)
 		velocity.z = move_toward(velocity.z, 0, FRICTION)

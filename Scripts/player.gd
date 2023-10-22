@@ -6,11 +6,12 @@ const JUMP_VELOCITY = 4.5
 const FRICTION = 1.0
 const ACCELERATION = 1.0
 
-#const DirtyEnemy = preload("res://dirty_enemy.gd")
+const DirtyEnemy = preload("res://dirty_enemy.gd")
 const Tool = preload("res://Scripts/Tools/Tool.gd")
 const InputMapConst = preload("res://Scripts/InputMapConst.gd")
 
 signal sig_dead
+signal sig_hp_update(hp: float)
 
 @export var max_hp: float = 5
 
@@ -150,6 +151,7 @@ func create_hitbox(type, positionOffset:Vector3 = Vector3(0,1,0)):
 	
 func take_damage(damage_source: DirtyEnemy):
 	cur_hp -= damage_source.damage
+	sig_hp_update.emit(cur_hp)
 	
 	if cur_hp <= 0:
 		print("dead")

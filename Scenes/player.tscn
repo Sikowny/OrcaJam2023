@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4exshole0aqw"]
+[gd_scene load_steps=6 format=3 uid="uid://b4exshole0aqw"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_lkaus"]
+[ext_resource type="PackedScene" uid="uid://bad776m7nc30h" path="res://Scenes/HUD.tscn" id="2_j8r16"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sycly"]
 
@@ -28,3 +29,9 @@ spring_length = 2.0
 [node name="Facing" type="RayCast3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.07908, 0)
 target_position = Vector3(0, 0, 4)
+
+[node name="HUD" parent="." instance=ExtResource("2_j8r16")]
+
+[connection signal="sig_hp_update" from="." to="HUD/HealthBar" method="_on_update_health"]
+
+[editable path="HUD"]

@@ -30,8 +30,17 @@ region_min_size = 0.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8te4p"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6twxu"]
-size = Vector3(0.42621, 0.508745, 0.629566)
+[sub_resource type="GDScript" id="GDScript_w0pbp"]
+script/source = "class_name dirtyable
+extends Node
+
+const dirty_enemy = preload(\"res://dirty_enemy.gd\")
+
+signal sig_recv_dirt(enemy_source: dirty_enemy)
+
+func recv_dirt(enemy_source: dirty_enemy):
+	sig_recv_dirt.emit(enemy_source)
+"
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_pcwoh"]
 viewport_path = NodePath("SubViewport")
@@ -73,17 +82,16 @@ transform = Transform3D(0.733953, 0, -3.93209, 0, 4, 0, 3.93209, 0, 0.733953, -7
 [node name="DirtyableProp" parent="washer/StaticBody3D" instance=ExtResource("5_6hjmc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.192448, 0.221182, -0.177549)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="washer/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.639711, 0.193803, 0, -0.175312)
-shape = SubResource("BoxShape3D_6twxu")
+[node name="dirtyable" type="Node" parent="washer"]
+script = SubResource("GDScript_w0pbp")
 
 [node name="dirty_enemy" parent="." instance=ExtResource("4_d68s2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2769, 0.526869, 8.66525)
 
 [node name="debug_text" parent="dirty_enemy" index="1"]
 texture = SubResource("ViewportTexture_pcwoh")
 
+[connection signal="sig_recv_dirt" from="washer/dirtyable" to="washer/StaticBody3D/DirtyableProp" method="try_dirty"]
+
 [editable path="CharacterBody3D"]
-[editable path="CharacterBody3D/HUD"]
 [editable path="washer/StaticBody3D/DirtyableProp"]
 [editable path="dirty_enemy"]
