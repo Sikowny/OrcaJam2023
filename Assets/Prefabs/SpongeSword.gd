@@ -5,6 +5,7 @@ extends "res://Scripts/Tools/Tool.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	visible = false
 	particles.emitting = false
 	m_hitbox.set_active(false)
 	set_physics_process(false)

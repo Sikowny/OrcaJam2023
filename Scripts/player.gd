@@ -29,6 +29,7 @@ var facing: Vector3 = Vector3.ZERO;
 var toolbelt: Array[Tool]
 var tool1: Tool
 var tool2: Tool
+var tool3: Tool
 
 func _ready() -> void:
 	spring_arm.spring_length = 15;
@@ -37,9 +38,10 @@ func _ready() -> void:
 	
 	tool1 = p_dustbuster.instantiate()
 	add_child(tool1)
-	#tool2 = p_spongesword.instantiate()
-	tool2 = p_spraycleaner.instantiate()
+	tool2 = p_spongesword.instantiate()
 	add_child(tool2)
+	tool3 = p_spraycleaner.instantiate()
+	add_child(tool3)
 
 func _physics_process(delta: float) -> void:
 	
@@ -71,9 +73,13 @@ func handle_attack():
 	if Input.is_action_just_pressed(InputMapConst.action1):
 		#create_hitbox("Dry", pOffSet)
 #		print("basic interaction pressed")
+		if tool3:
+			tool3.on_button_press()
 		return
 	elif Input.is_action_just_released(InputMapConst.action1):
 #		print("basic interaction released")
+		if tool3:
+			tool3.on_button_release()
 		return
 		
 	if Input.is_action_just_pressed(InputMapConst.action2):
@@ -124,6 +130,7 @@ func update_facing(direction):
 	facing_ray.target_position = facing*4 #for debuging
 	if(tool1): tool1.rotation.y = -facing.signed_angle_to(Vector3(0,0,-1),Vector3(0,1,0))
 	if(tool2): tool2.rotation.y = -facing.signed_angle_to(Vector3(0,0,-1),Vector3(0,1,0))
+	if(tool3): tool3.rotation.y = -facing.signed_angle_to(Vector3(0,0,-1),Vector3(0,1,0))
 	
 	#parented camera makes this not a good idea at the moment
 	#transform = transform.rotated(Vector3.UP, Vector3.FORWARD.dot(direction))
