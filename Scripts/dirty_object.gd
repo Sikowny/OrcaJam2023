@@ -1,6 +1,9 @@
 extends Area3D
+class_name dirty_object
 
 const AttackType = preload("res://Scripts/Common/AttackType.gd")
+
+signal is_cleaned
 
 @export var SPEED: float = 0.0
 @export var direction: Vector3 = Vector3.ZERO
@@ -32,7 +35,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	#if overlaps_area(hitbox):
 		#print("hello")
-	if(dirt_health <= 0): queue_free()
+	if(dirt_health <= 0): 
+		is_cleaned.emit()
+		queue_free()
 	pass
 	
 func hit_clean(damage: float):

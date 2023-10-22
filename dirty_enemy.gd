@@ -11,6 +11,8 @@ const ACCELERATION = 1.0
 @onready var facing_ray: RayCast3D = $Facing
 @onready var debug_text: Sprite3D = $debug_text
 @onready var mesh: MeshInstance3D = $CollisionShape3D/MeshInstance3D
+@onready var dirty_object: Area3D = $dirty_object
+
 
 var dirty_object_ref = preload("res://Scenes/dirty_object.tscn")
 
@@ -22,7 +24,7 @@ var facing: Vector3 = Vector3.ZERO;
 
 func _ready() -> void:
 	# set up dirty object attached to this enemy
-	attach_dirty_obj()
+	ready_dirty_obj()
 	# debug info
 	debug_text.text = str(AttackType.EAttackType.keys()[dirty_type])
 	print(name + ":" + debug_text.text)
@@ -47,12 +49,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide() #update player velocity / physics
 	
 	
-func attach_dirty_obj():
-	var new_dirty_object = dirty_object_ref.instantiate()
-	new_dirty_object.dirt_health = dirt_health
-	new_dirty_object.dirty_type = dirty_type
+func ready_dirty_obj():
+	dirty_object.dirt_health = dirt_health
+	dirty_object.dirty_type = dirty_type
 	#new_dirty_object.scale = scale# + Vector3(1,1,1)
-	add_child(new_dirty_object)
 
 func get_move_input():
 	#input_move = 
@@ -94,3 +94,7 @@ func create_hitbox(type, positionOffset:Vector3 = Vector3(0,1,0)):
 	new_hitbox.attack_type = type
 	add_child(new_hitbox) # add this node to player.
 
+
+
+func _on_dirty_object_is_cleaned() -> void:
+	queue_free()
