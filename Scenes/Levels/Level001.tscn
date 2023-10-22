@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cjxnim6hsp5qn"]
+[gd_scene load_steps=32 format=3 uid="uid://cjxnim6hsp5qn"]
 
 [ext_resource type="PackedScene" uid="uid://b4exshole0aqw" path="res://Scenes/player.tscn" id="1_m84y4"]
 [ext_resource type="PackedScene" uid="uid://d4dgbxwfmsdgk" path="res://Scenes/geo_block.tscn" id="2_u1gr1"]
@@ -24,6 +24,10 @@
 [ext_resource type="ArrayMesh" uid="uid://cb46t18hlxgfk" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/bookcaseClosedWide.obj" id="22_kd2yb"]
 [ext_resource type="ArrayMesh" uid="uid://cbm2fta0mo1t5" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/ceilingFan.obj" id="23_2hjg4"]
 [ext_resource type="Script" path="res://Scenes/Levels/CeilingFan.gd" id="24_ogop8"]
+[ext_resource type="ArrayMesh" uid="uid://biydtlc5gvuij" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/doorwayOpen.obj" id="25_lpx7n"]
+[ext_resource type="ArrayMesh" uid="uid://cefvlxh7xtkwe" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/kitchenBar.obj" id="26_8143a"]
+[ext_resource type="ArrayMesh" uid="uid://c18wgbo8r1cd1" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/kitchenCabinet.obj" id="27_hm14s"]
+[ext_resource type="ArrayMesh" uid="uid://uarubfgjc80u" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/kitchenCabinetCornerInner.obj" id="28_hbevm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id47p"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -281,6 +285,41 @@ transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -21.36
 mesh = ExtResource("5_3ihwo")
 skeleton = NodePath("../..")
 
+[node name="Wall56" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -2.52655, 0.5, -11.8706)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall57" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -2.52655, 0.5, -8.63632)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall58" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 5.11486, 0.5, -8.63632)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall59" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 5.11486, 0.5, -12.1549)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall60" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 5.11486, 0.5, -15.9579)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall61" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 5.11486, 0.5, -19.8674)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall62" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 5.11486, 0.5, -19.8674)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
 [node name="Wall45" type="MeshInstance3D" parent="Walls"]
 transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -21.3983, 0.482838, -17.2342)
 mesh = ExtResource("5_3ihwo")
@@ -301,8 +340,28 @@ transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -16.76
 mesh = ExtResource("5_3ihwo")
 skeleton = NodePath("../..")
 
+[node name="Wall63" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -16.1023, 0.482838, -14.0868)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall54" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -6.45994, 0.482838, -11.9646)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall55" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -8.94044, 0.482838, -11.9646)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
 [node name="Wall49" type="MeshInstance3D" parent="Walls"]
 transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -10.1699, 0.482838, -18.2344)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall64" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -10.1699, 0.482838, -17.7262)
 mesh = ExtResource("5_3ihwo")
 skeleton = NodePath("../..")
 
@@ -311,97 +370,43 @@ transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -10.16
 mesh = ExtResource("5_3ihwo")
 skeleton = NodePath("../..")
 
+[node name="Wall52" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -2.56303, 0.482838, -19.8925)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall53" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -2.56303, 0.482838, -15.9237)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
 [node name="Wall46" type="MeshInstance3D" parent="Walls"]
 transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -21.6841, 0.5, 9.83079)
 mesh = ExtResource("5_3ihwo")
 skeleton = NodePath("../..")
 
-[node name="Furniture" type="Node" parent="."]
+[node name="TEST OBJECTS" type="Node" parent="."]
 
-[node name="GooeyTrash" type="MeshInstance3D" parent="Furniture"]
+[node name="GooeyTrash" type="MeshInstance3D" parent="TEST OBJECTS"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 5.81761, 0.5, 9.49356)
 mesh = ExtResource("6_oskhs")
 skeleton = NodePath("../..")
 
-[node name="dirty_object4" parent="Furniture/GooeyTrash" instance=ExtResource("3_sr23x")]
+[node name="dirty_object4" parent="TEST OBJECTS/GooeyTrash" instance=ExtResource("3_sr23x")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.0376275, 0, -0.0208721)
 dirty_type = 2
 
-[node name="dirty_object4" parent="Furniture" instance=ExtResource("3_sr23x")]
+[node name="dirty_object4" parent="TEST OBJECTS" instance=ExtResource("3_sr23x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.78141, 1, 8.81671)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Furniture/dirty_object4"]
+[node name="SpotLight3D" type="SpotLight3D" parent="TEST OBJECTS/dirty_object4"]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 3.37405, 0)
 light_color = Color(0.933333, 1, 0.360784, 1)
 
-[node name="Food" type="Node" parent="Furniture"]
-
-[node name="Avocado" type="MeshInstance3D" parent="Furniture/Food"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -14.8712, 2.41025, -2.88194)
-mesh = ExtResource("8_q5p3c")
-skeleton = NodePath("../../..")
-
-[node name="Bathroom" type="Node" parent="Furniture"]
-
-[node name="BathroomCabinet" type="MeshInstance3D" parent="Furniture/Bathroom"]
-transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -14.4238, 2.37972, -19.1131)
-mesh = ExtResource("8_131ym")
-skeleton = NodePath("../../..")
-
-[node name="BathroomCabinetDrawer" type="MeshInstance3D" parent="Furniture/Bathroom"]
-transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -12.4474, 0.5, -17.742)
-mesh = ExtResource("9_ap5hc")
-skeleton = NodePath("../../..")
-
-[node name="dirty_object4" parent="Furniture/Bathroom/BathroomCabinetDrawer" instance=ExtResource("3_sr23x")]
-transform = Transform3D(-0.25, 0, 2.18557e-08, 0, 0.25, 0, -2.18557e-08, 0, -0.25, -1.06028, 0, -2.9711)
-dirty_type = 1
-
-[node name="BathroomMirror" type="MeshInstance3D" parent="Furniture/Bathroom"]
-transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -12.2124, 2.44729, -19.5176)
-mesh = ExtResource("10_ouw13")
-skeleton = NodePath("../../..")
-
-[node name="dirty_object4" parent="Furniture/Bathroom/BathroomMirror" instance=ExtResource("3_sr23x")]
-transform = Transform3D(-0.25, 0, 3.7749e-08, 0, 0.25, 0, -3.7749e-08, 0, -0.25, 0.160885, -0.361823, 0.118241)
-
-[node name="Shower" type="MeshInstance3D" parent="Furniture/Bathroom"]
-transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -13.8287, 0.5, -17.4696)
-mesh = ExtResource("11_ugwue")
-skeleton = NodePath("../../..")
-
-[node name="dirty_object4" parent="Furniture/Bathroom/Shower" instance=ExtResource("3_sr23x")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.278728, 0, 0.248103)
-dirty_type = 2
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Furniture/Bathroom"]
-transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -13.9104, 7.258, -16.7516)
-light_energy = 7.626
-spot_range = 11.805
-
-[node name="Toilet" type="MeshInstance3D" parent="Furniture/Bathroom"]
-transform = Transform3D(4.76995e-08, 0, -4, 0, 4, 0, 4, 0, 4.76995e-08, -16.5195, 0.5, -14.9531)
-mesh = ExtResource("12_ywndm")
-skeleton = NodePath("../../..")
-
-[node name="dirty_object4" parent="Furniture/Bathroom/Toilet" instance=ExtResource("3_sr23x")]
-transform = Transform3D(2.98122e-09, 0, 0.25, 0, 0.25, 0, -0.25, 0, 2.98122e-09, -0.139784, -8.76664, -0.291839)
-dirty_type = 2
-
-[node name="DoorwayFront" type="MeshInstance3D" parent="Furniture/Bathroom"]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -9.91126, 0.5, -14.3152)
-mesh = ExtResource("14_8jq3s")
-skeleton = NodePath("../../..")
-
-[node name="CeilingFan2" type="MeshInstance3D" parent="Furniture/Bathroom"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -13.5531, 6.01585, -16.8805)
-mesh = ExtResource("23_2hjg4")
-skeleton = NodePath("../../..")
-script = ExtResource("24_ogop8")
-
-[node name="TelevisionModern" type="MeshInstance3D" parent="."]
+[node name="TelevisionModern" type="MeshInstance3D" parent="TEST OBJECTS"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -2.75504, 0.5, 8.82335)
 mesh = ExtResource("7_h3sm1")
+skeleton = NodePath("../..")
 
 [node name="Lighting" type="Node" parent="."]
 
@@ -416,69 +421,70 @@ light_energy = 0.743
 [node name="StreamingRoom" type="Node" parent="."]
 
 [node name="DeskCorner" type="MeshInstance3D" parent="StreamingRoom"]
-transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, 19.5133, 0.500002, -15.2594)
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, 0.993498, 0.500002, -15.2594)
 mesh = ExtResource("15_h5f7t")
 skeleton = NodePath("../..")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="StreamingRoom"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 21.8234, 8.27443, -15.5412)
-spot_range = 17.632
-
 [node name="FloorFull" type="MeshInstance3D" parent="StreamingRoom"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 23.5788, 0.358318, -19.7811)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 5.059, 0.358318, -19.7811)
 mesh = ExtResource("16_u72th")
 skeleton = NodePath("../..")
 
 [node name="FloorFull2" type="MeshInstance3D" parent="StreamingRoom"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 23.5788, 0.358318, -16.0222)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 5.059, 0.358318, -16.0222)
 mesh = ExtResource("16_u72th")
 skeleton = NodePath("../..")
 
 [node name="FloorFull3" type="MeshInstance3D" parent="StreamingRoom"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 19.9725, 0.358318, -16.0222)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 1.4527, 0.358318, -16.0222)
 mesh = ExtResource("16_u72th")
 skeleton = NodePath("../..")
 
 [node name="FloorFull4" type="MeshInstance3D" parent="StreamingRoom"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 19.9591, 0.310308, -20.0192)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 1.4393, 0.310308, -20.0192)
 mesh = ExtResource("16_u72th")
 skeleton = NodePath("../..")
 
 [node name="FloorFull5" type="MeshInstance3D" parent="StreamingRoom"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 23.6803, 0.431106, -12.3012)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 5.1605, 0.431106, -12.3012)
 mesh = ExtResource("16_u72th")
 skeleton = NodePath("../..")
 
 [node name="FloorFull6" type="MeshInstance3D" parent="StreamingRoom"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 23.6803, 0.431106, -8.54231)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 5.1605, 0.431106, -8.54231)
 mesh = ExtResource("16_u72th")
 skeleton = NodePath("../..")
 
 [node name="FloorFull7" type="MeshInstance3D" parent="StreamingRoom"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 20.074, 0.431106, -8.54231)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 1.5542, 0.431106, -8.54231)
 mesh = ExtResource("16_u72th")
 skeleton = NodePath("../..")
 
 [node name="FloorFull8" type="MeshInstance3D" parent="StreamingRoom"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 20.0605, 0.383096, -12.5393)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 1.5407, 0.383096, -12.5393)
 mesh = ExtResource("16_u72th")
 skeleton = NodePath("../..")
 
 [node name="Laptop" type="MeshInstance3D" parent="StreamingRoom"]
-transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 22.2943, 2.05616, -17.4907)
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 3.7745, 2.05616, -17.4907)
 mesh = ExtResource("17_rg40j")
 skeleton = NodePath("../..")
 
 [node name="LoungeSofa" type="MeshInstance3D" parent="StreamingRoom"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 20.9595, 0.5, -9.23509)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 2.4397, 0.5, -9.23509)
 mesh = ExtResource("18_at2fl")
 skeleton = NodePath("../..")
 
 [node name="CeilingFan3" type="MeshInstance3D" parent="StreamingRoom"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 20.6261, 6.01585, -13.1565)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 2.10632, 6.01585, -13.1565)
 mesh = ExtResource("23_2hjg4")
 skeleton = NodePath("../..")
 script = ExtResource("24_ogop8")
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="StreamingRoom"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 1.81526, 8.27191, -16.7079)
+light_energy = 7.626
+spot_range = 11.805
 
 [node name="Food" type="Node" parent="."]
 
@@ -495,22 +501,112 @@ skeleton = NodePath("../..")
 [node name="Bedroom" type="Node" parent="."]
 
 [node name="BedDouble" type="MeshInstance3D" parent="Bedroom"]
-transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, 0.30496, 0.5, -18.183)
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -7.78621, 0.5, -18.1393)
 mesh = ExtResource("21_pnykk")
 skeleton = NodePath("../..")
 
 [node name="BookcaseClosedWide" type="MeshInstance3D" parent="Bedroom"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 4.03805, 0.5, -19.7048)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -4.05312, 0.5, -19.6611)
 mesh = ExtResource("22_kd2yb")
 skeleton = NodePath("../..")
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Bedroom"]
-transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 2.53993, 8.27191, -16.7516)
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -5.55124, 8.27191, -16.7079)
+light_energy = 7.626
+spot_range = 11.805
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Bedroom"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -19.1141, 8.27191, -10.6221)
 light_energy = 7.626
 spot_range = 11.805
 
 [node name="CeilingFan" type="MeshInstance3D" parent="Bedroom"]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 2.6693, 6.01585, -16.4214)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -5.42187, 6.01585, -16.3777)
 mesh = ExtResource("23_2hjg4")
 skeleton = NodePath("../..")
 script = ExtResource("24_ogop8")
+
+[node name="DoorwayOpen" type="MeshInstance3D" parent="Bedroom"]
+transform = Transform3D(2.31826, 0, -3.2597, 0, 4, 0, 3.2597, 0, 2.31826, -8.76447, 0.5, -12.2376)
+mesh = ExtResource("25_lpx7n")
+skeleton = NodePath("../..")
+
+[node name="Bathroom" type="Node" parent="."]
+
+[node name="BathroomCabinet" type="MeshInstance3D" parent="Bathroom"]
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -14.4238, 2.37972, -19.1131)
+mesh = ExtResource("8_131ym")
+skeleton = NodePath("../..")
+
+[node name="BathroomCabinetDrawer" type="MeshInstance3D" parent="Bathroom"]
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -12.4474, 0.5, -17.742)
+mesh = ExtResource("9_ap5hc")
+skeleton = NodePath("../..")
+
+[node name="dirty_object4" parent="Bathroom/BathroomCabinetDrawer" instance=ExtResource("3_sr23x")]
+transform = Transform3D(-0.25, 0, 2.18557e-08, 0, 0.25, 0, -2.18557e-08, 0, -0.25, -1.06028, 0, -2.9711)
+dirty_type = 1
+
+[node name="BathroomMirror" type="MeshInstance3D" parent="Bathroom"]
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -12.2124, 2.44729, -19.5176)
+mesh = ExtResource("10_ouw13")
+skeleton = NodePath("../..")
+
+[node name="dirty_object4" parent="Bathroom/BathroomMirror" instance=ExtResource("3_sr23x")]
+transform = Transform3D(-0.25, 0, 3.7749e-08, 0, 0.25, 0, -3.7749e-08, 0, -0.25, 0.160885, -0.361823, 0.118241)
+
+[node name="Shower" type="MeshInstance3D" parent="Bathroom"]
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -13.8287, 0.5, -17.4696)
+mesh = ExtResource("11_ugwue")
+skeleton = NodePath("../..")
+
+[node name="dirty_object4" parent="Bathroom/Shower" instance=ExtResource("3_sr23x")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.278728, 0, 0.248103)
+dirty_type = 2
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Bathroom"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -13.9104, 7.258, -16.7516)
+light_energy = 7.626
+spot_range = 11.805
+
+[node name="Toilet" type="MeshInstance3D" parent="Bathroom"]
+transform = Transform3D(4.76995e-08, 0, -4, 0, 4, 0, 4, 0, 4.76995e-08, -16.5195, 0.5, -14.9531)
+mesh = ExtResource("12_ywndm")
+skeleton = NodePath("../..")
+
+[node name="dirty_object4" parent="Bathroom/Toilet" instance=ExtResource("3_sr23x")]
+transform = Transform3D(2.98122e-09, 0, 0.25, 0, 0.25, 0, -0.25, 0, 2.98122e-09, -0.139784, -8.76664, -0.291839)
+dirty_type = 2
+
+[node name="DoorwayFront" type="MeshInstance3D" parent="Bathroom"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -10.1775, 0.5, -14.3152)
+mesh = ExtResource("14_8jq3s")
+skeleton = NodePath("../..")
+
+[node name="CeilingFan2" type="MeshInstance3D" parent="Bathroom"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -13.5531, 6.01585, -16.8805)
+mesh = ExtResource("23_2hjg4")
+skeleton = NodePath("../..")
+script = ExtResource("24_ogop8")
+
+[node name="Food2" type="Node" parent="."]
+
+[node name="Avocado" type="MeshInstance3D" parent="Food2"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -14.8712, 2.41025, -2.88194)
+mesh = ExtResource("8_q5p3c")
+skeleton = NodePath("../..")
+
+[node name="Kitchen" type="Node" parent="."]
+
+[node name="KitchenBar" type="MeshInstance3D" parent="Kitchen"]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -19.6879, 0.5, -11.3598)
+mesh = ExtResource("26_8143a")
+skeleton = NodePath("../..")
+
+[node name="KitchenCabinet" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -16.5772, 0.499878, -11.5456)
+mesh = ExtResource("27_hm14s")
+
+[node name="KitchenCabinetCornerInner" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -17.5325, 0.499878, -7.85163)
+mesh = ExtResource("28_hbevm")
