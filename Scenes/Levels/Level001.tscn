@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cjxnim6hsp5qn"]
+[gd_scene load_steps=11 format=3 uid="uid://cjxnim6hsp5qn"]
 
 [ext_resource type="PackedScene" uid="uid://b4exshole0aqw" path="res://Scenes/player.tscn" id="1_m84y4"]
 [ext_resource type="PackedScene" uid="uid://d4dgbxwfmsdgk" path="res://Scenes/geo_block.tscn" id="2_u1gr1"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d0rav5q0sims2" path="res://Scenes/dirty_enemy.tscn" id="4_rlujl"]
 [ext_resource type="ArrayMesh" uid="uid://cy7sav4cj2pvh" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/wall.obj" id="5_3ihwo"]
 [ext_resource type="ArrayMesh" uid="uid://joufgep37lgv" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/trashcan.obj" id="6_oskhs"]
+[ext_resource type="ArrayMesh" uid="uid://ckptjcaiquki6" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/televisionModern.obj" id="7_h3sm1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_id47p"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -34,6 +35,9 @@ environment = SubResource("Environment_injp6")
 
 [node name="dirty_object" parent="Objects" instance=ExtResource("3_sr23x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 1)
+
+[node name="dirty_object4" parent="Objects" instance=ExtResource("3_sr23x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.78141, 1, 8.81671)
 
 [node name="dirty_object2" parent="Objects" instance=ExtResource("3_sr23x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.172877, 0.5, -3.77387)
@@ -74,6 +78,51 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 13.7884, 0.482838, 13.9088)
 mesh = ExtResource("5_3ihwo")
 skeleton = NodePath("../..")
 
+[node name="Wall4" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -5.90697, 0.5, 13.9145)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall5" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -1.89556, 0.5, 13.9145)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall6" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 2.01733, 0.482838, 13.9088)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall7" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -17.528, 0.5, 13.9145)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall8" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -13.5166, 0.5, 13.9145)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall9" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -9.60371, 0.482838, 13.9088)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall10" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 17.4628, 0.5, 13.9145)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall11" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 21.4742, 0.5, 13.9145)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
+[node name="Wall12" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 25.3871, 0.482838, 13.9088)
+mesh = ExtResource("5_3ihwo")
+skeleton = NodePath("../..")
+
 [node name="Furniture" type="Node" parent="."]
 
 [node name="GooeyTrash" type="MeshInstance3D" parent="Furniture"]
@@ -84,3 +133,7 @@ skeleton = NodePath("../..")
 [node name="dirty_object4" parent="Furniture/GooeyTrash" instance=ExtResource("3_sr23x")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.0376275, 0, -0.0208721)
 dirty_type = 2
+
+[node name="TelevisionModern" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -2.75504, 0.5, 8.82335)
+mesh = ExtResource("7_h3sm1")
