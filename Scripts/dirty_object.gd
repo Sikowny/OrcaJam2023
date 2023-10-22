@@ -17,17 +17,14 @@ var lifeTime = 120;
 func _ready() -> void:
 	add_to_group("dirty_things")
 	debug_text.text = str(AttackType.EAttackType.keys()[dirty_type])
-	
-	match dirty_type:
-		"Dry": 
+	print(name + ":" + debug_text.text)
+	match debug_text.text:
+		"dry": 
 			mesh.mesh.material.albedo_color = Color(0.6,0.25,0,0.8)
-			print(name + ":" + debug_text.text)
-		"Wet": 
+		"wet": 
 			mesh.mesh.material.albedo_color = Color(0.3,0.5,0.6,0.8)
-			print(name + ":" + debug_text.text)
-		"Goo": 
+		"goo": 
 			mesh.mesh.material.albedo_color = Color(0.45,0.6,0.3,0.8)
-			print(name + ":" + debug_text.text)
 	pass
 	#reparent($"../..")
 

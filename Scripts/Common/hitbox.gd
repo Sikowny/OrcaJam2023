@@ -17,10 +17,10 @@ var lifeTime = 5;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# debug_text.text = attack_type
-	match attack_type:
-		"Dry": mesh.material_override.albedo_color = Color(1,0,0,0.8)
-		"Wet": mesh.material_override.albedo_color = Color(0,0,1,0.8)
-		"Goo": mesh.material_override.albedo_color = Color(0,1,0,0.8) 
+	match str(attack_type):
+		"0": mesh.material_override.albedo_color = Color(1,0,0,0.8) #dry
+		"1": mesh.material_override.albedo_color = Color(0,0,1,0.8) #wet
+		"2": mesh.material_override.albedo_color = Color(0,1,0,0.8) #goo
 	pass
 	#reparent($"../..")
 

@@ -36,7 +36,6 @@ scale_curve = SubResource("CurveTexture_a6uei")
 [sub_resource type="QuadMesh" id="QuadMesh_i3p6k"]
 
 [node name="DustBuster" type="Node3D" node_paths=PackedStringArray("particles", "m_hitbox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 1.105, -0.496)
 script = ExtResource("1_t6p0u")
 particles = NodePath("GPUParticles3D")
 m_hitbox = NodePath("Hitbox")

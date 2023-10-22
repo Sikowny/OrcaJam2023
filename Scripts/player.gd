@@ -63,6 +63,7 @@ func handle_jump():
 		
 func handle_attack():
 	var pOffSet = facing + Vector3(0,1,0)
+	#if(tool2): tool2.rotation = tool2.rotation*facing
 	if Input.is_action_just_pressed(InputMapConst.action1):
 		#create_hitbox("Dry", pOffSet)
 #		print("basic interaction pressed")
@@ -117,6 +118,8 @@ func update_facing(direction):
 	if direction == Vector3.ZERO: return;
 	facing = direction.normalized()
 	facing_ray.target_position = facing*4 #for debuging
+	if(tool1): tool1.rotation.y = -facing.signed_angle_to(Vector3(0,0,-1),Vector3(0,1,0))
+	if(tool2): tool2.rotation.y = -facing.signed_angle_to(Vector3(0,0,-1),Vector3(0,1,0))
 	
 	#parented camera makes this not a good idea at the moment
 	#transform = transform.rotated(Vector3.UP, Vector3.FORWARD.dot(direction))
