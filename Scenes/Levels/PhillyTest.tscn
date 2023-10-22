@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://xpnyfjk2otfu"]
+
+[ext_resource type="PackedScene" uid="uid://cgc2um7dp3xyq" path="res://Scenes/Levels/world_brendansTest.tscn" id="1_ppgqi"]
+
+[node name="World" instance=ExtResource("1_ppgqi")]
