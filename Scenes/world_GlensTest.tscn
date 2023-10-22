@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8a22yjtlox5a"]
+[gd_scene load_steps=15 format=3 uid="uid://c8a22yjtlox5a"]
 
 [ext_resource type="PackedScene" uid="uid://b4exshole0aqw" path="res://Scenes/player.tscn" id="1_6exnl"]
 [ext_resource type="PackedScene" uid="uid://fly74vblxumk" path="res://Assets/Models/kenney_furniture-kit/Models/GLTF format/washer.glb" id="4_10hft"]
@@ -29,6 +29,16 @@ region_min_size = 0.1
 [sub_resource type="BoxMesh" id="BoxMesh_3xusq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8te4p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u4brl"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.513726, 0.254902, 0.0823529, 0.698039)
+
+[sub_resource type="SphereMesh" id="SphereMesh_aulbc"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_u4brl")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6twxu"]
 size = Vector3(0.42621, 0.508745, 0.629566)
@@ -72,6 +82,9 @@ transform = Transform3D(0.733953, 0, -3.93209, 0, 4, 0, 3.93209, 0, 0.733953, -7
 
 [node name="DirtyableProp" parent="washer/StaticBody3D" instance=ExtResource("5_6hjmc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.192448, 0.221182, -0.177549)
+
+[node name="MeshInstance3D" parent="washer/StaticBody3D/DirtyableProp" index="0"]
+mesh = SubResource("SphereMesh_aulbc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="washer/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.639711, 0.193803, 0, -0.175312)

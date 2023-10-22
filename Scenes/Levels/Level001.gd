@@ -1,11 +1,6 @@
-extends Node
-
-
+extends AbstractLevel
 
 @onready var level_win_text: CanvasLayer = $Level_Win
-
-var goto_main_timer = 240
-var level_won = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,9 +9,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var check_things = get_tree().get_nodes_in_group("dirty_things").is_empty()
-	if(check_things): level_won = true
-	if(level_won): level_complete()
+	update_progress()
+	
+	if num_dirty_obj == 0: #victory
+		level_complete()
 			
 			
 func level_complete():

@@ -1,4 +1,4 @@
-extends Node
+extends AbstractLevel
 
 
 @onready var wet_things: Node3D = $"Wet Things"
@@ -7,27 +7,30 @@ extends Node
 @onready var tut_win: CanvasLayer = $Tut_Win
 
 
-@onready var dirty_Wet1: Node3D = $"Wet Things/desk/DirtyableProp"
-@onready var dirty_Wet2: Node3D = $"Wet Things/loungeSofa/DirtyableProp"
-@onready var dirty_Dry1: Node3D = $"Dry Things/bedSingle/DirtyableProp"
-@onready var dirty_Dry2: Node3D = $"Dry Things/bookcaseClosedWide/DirtyableProp"
-@onready var dirty_Goo1: Node3D = $"Goo Things/bathtub/DirtyableProp"
-@onready var dirty_Goo2: Node3D = $"Goo Things/toilet/DirtyableProp"
+@onready var dirty_Wet1: Node3D = $"Wet Things/Desk/DirtyableProp"
+@onready var dirty_Wet2: Node3D = $"Wet Things/LoungeSofa/DirtyableProp"
+@onready var dirty_Dry1: Node3D = $"Dry Things/BedSingle/DirtyableProp"
+@onready var dirty_Dry2: Node3D = $"Dry Things/BookcaseClosedWide/DirtyableProp"
+@onready var dirty_Goo1: Node3D = $"Goo Things/Bathtub/DirtyableProp"
+@onready var dirty_Goo2: Node3D = $"Goo Things/Toilet/DirtyableProp"
 
 var tutStage: int = 0
-
-var goto_main_timer = 240
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	remove_child(wet_things)
 	remove_child(goo_things)
 	remove_child(tut_win)
+	
+	min_cleaned_targets = 6
+	
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	update_progress()
+	
 	match(tutStage):
 		0:
 			if(dirty_Dry1.dirty_obj == null) and (dirty_Dry2.dirty_obj == null):
