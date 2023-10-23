@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/dirty_object.gd" id="1_dme4m"]
 [ext_resource type="Material" uid="uid://cp17poajdniy6" path="res://Assets/Materials/dirty_object_mat.tres" id="2_1os4t"]
-[ext_resource type="PackedScene" path="res://Scenes/debug_text.tscn" id="2_u55ve"]
+[ext_resource type="PackedScene" uid="uid://bt628kp1g55qp" path="res://Scenes/debug_text.tscn" id="2_u55ve"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cip70"]
 
@@ -10,7 +10,7 @@
 resource_local_to_scene = true
 material = ExtResource("2_1os4t")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_w0fvv"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_6muh6"]
 viewport_path = NodePath("SubViewport")
 
 [node name="dirty_object" type="Area3D" groups=["dirty_things"]]
@@ -23,4 +23,4 @@ shape = SubResource("SphereShape3D_cip70")
 mesh = SubResource("SphereMesh_s4hin")
 
 [node name="debug_text" parent="." instance=ExtResource("2_u55ve")]
-texture = SubResource("ViewportTexture_w0fvv")
+texture = SubResource("ViewportTexture_6muh6")

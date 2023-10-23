@@ -1,13 +1,14 @@
 class_name AbstractLevel
 extends Node
 
-@export var goto_main_timer: float = 240
+@export var total_time: float = 240
 
 signal sig_progress_update(progress: float)
 signal sig_timer_update(t: int)
 
-@onready var time_left: float = goto_main_timer
+@onready var time_left: float = total_time
 
+var goto_main_timer: float = 240
 var level_won = false
 var targets_cleaned: float = 0
 var num_dirty_obj: int
