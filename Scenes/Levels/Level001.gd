@@ -18,6 +18,6 @@ func _process(delta: float) -> void:
 			
 			
 func level_complete():
-	if(goto_main_timer <= 0): get_tree().change_scene_to_file("res://Scenes/Level002.tscn")
+	if(goto_main_timer <= 0): get_tree().change_scene_to_file("res://Scenes/Levels/Level002.tscn")
 	goto_main_timer -= 1
 	add_child(level_win_text)
