@@ -103,6 +103,7 @@ func handle_attack(delta: float):
 		atk_target.take_damage(self)
 	
 func handle_movement():
+	(await get_tree().process_frame) 
 	var desired_velocity = nav_agent.get_next_path_position()
 	desired_velocity = (desired_velocity - global_position).normalized()
 #
