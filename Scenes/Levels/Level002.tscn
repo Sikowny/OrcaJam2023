@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dvsptqea8ijfg"]
+[gd_scene load_steps=34 format=3 uid="uid://4ajm4rn1sl4p"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/Level001.gd" id="1_oe0m0"]
 [ext_resource type="PackedScene" uid="uid://b4exshole0aqw" path="res://Scenes/player.tscn" id="2_ytyik"]
@@ -24,7 +24,7 @@
 [ext_resource type="ArrayMesh" uid="uid://ckptjcaiquki6" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/televisionModern.obj" id="25_qwckd"]
 [ext_resource type="ArrayMesh" uid="uid://b01urdhguv1rv" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/kitchenSink.obj" id="27_7vpyp"]
 [ext_resource type="PackedScene" uid="uid://d4dgbxwfmsdgk" path="res://Scenes/geo_block.tscn" id="27_apw4v"]
-[ext_resource type="AudioStream" uid="uid://cwa0lo2pj10o6" path="res://Assets/Audio/SFX/ThemeSong.mp3" id="28_2ngdx"]
+[ext_resource type="AudioStream" uid="uid://dqyflqncwyv7u" path="res://Assets/Audio/SFX/ThemeSong.mp3" id="28_2ngdx"]
 [ext_resource type="ArrayMesh" uid="uid://djo8t7b72dmoh" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/table.obj" id="29_crai7"]
 [ext_resource type="ArrayMesh" uid="uid://k6ofvd1vmwb0" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/washerDryerStacked.obj" id="30_5ctcw"]
 [ext_resource type="ArrayMesh" uid="uid://ckosg444448bd" path="res://Assets/Models/kenney_furniture-kit/Models/OBJ format/tableCoffee.obj" id="31_42i5k"]
@@ -53,6 +53,7 @@ outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
 
 [node name="World" type="Node"]
 script = ExtResource("1_oe0m0")
+total_time = 120.0
 
 [node name="Ground" type="Node" parent="."]
 
@@ -392,6 +393,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="sig_progress_update" from="." to="Character/CharacterBody3D/HUD/LevelProgressBar" method="recv_progress"]
+[connection signal="sig_timer_update" from="." to="Character/CharacterBody3D/HUD/Countdown" method="_recv_time_left"]
 
 [editable path="Character/CharacterBody3D"]
 [editable path="Character/CharacterBody3D/HUD"]
