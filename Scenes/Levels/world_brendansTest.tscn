@@ -163,3 +163,8 @@ text = "TUTORIAL COMPLETE!"
 label_settings = SubResource("LabelSettings_gqsfw")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="sig_progress_update" from="." to="CharacterBody3D/HUD/LevelProgressBar" method="recv_progress"]
+
+[editable path="CharacterBody3D"]
+[editable path="CharacterBody3D/HUD"]

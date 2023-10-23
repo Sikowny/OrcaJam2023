@@ -586,3 +586,8 @@ text = "LEVEL COMPLETE!"
 label_settings = SubResource("LabelSettings_ecgkl")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="sig_progress_update" from="." to="Character/CharacterBody3D/HUD/LevelProgressBar" method="recv_progress"]
+
+[editable path="Character/CharacterBody3D"]
+[editable path="Character/CharacterBody3D/HUD"]
