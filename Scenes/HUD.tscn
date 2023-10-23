@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bad776m7nc30h"]
+[gd_scene load_steps=9 format=3 uid="uid://bad776m7nc30h"]
 
 [ext_resource type="Script" path="res://Scenes/HealthBar.gd" id="1_72qxe"]
 [ext_resource type="Script" path="res://Scenes/LevelProgressBar.gd" id="2_upwqy"]
+[ext_resource type="Script" path="res://Scenes/TimerLabel.gd" id="3_row8a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3302q"]
 bg_color = Color(0.188235, 0, 0.00784314, 1)
@@ -14,6 +15,13 @@ bg_color = Color(0, 0.0901961, 0.141176, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hr4xo"]
 bg_color = Color(0.313726, 0.596078, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rbgh"]
+bg_color = Color(0, 0, 0, 0.352941)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -48,3 +56,18 @@ max_value = 1.0
 fill_mode = 1
 show_percentage = false
 script = ExtResource("2_upwqy")
+
+[node name="Countdown" type="RichTextLabel" parent="."]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.0
+offset_right = 38.0
+offset_bottom = 26.0
+grow_horizontal = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0rbgh")
+bbcode_enabled = true
+text = "[center]24[/center]"
+script = ExtResource("3_row8a")

@@ -56,6 +56,7 @@ outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
 
 [node name="World" type="Node"]
 script = ExtResource("1_e3r20")
+goto_main_timer = 80.0
 
 [node name="Ground" type="Node" parent="."]
 
@@ -588,6 +589,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="sig_progress_update" from="." to="Character/CharacterBody3D/HUD/LevelProgressBar" method="recv_progress"]
+[connection signal="sig_timer_update" from="." to="Character/CharacterBody3D/HUD/Countdown" method="_recv_time_left"]
 
 [editable path="Character/CharacterBody3D"]
 [editable path="Character/CharacterBody3D/HUD"]

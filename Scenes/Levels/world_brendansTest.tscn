@@ -36,6 +36,7 @@ outline_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
 
 [node name="World" type="Node"]
 script = ExtResource("1_spu3o")
+goto_main_timer = 60.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_injp6")
@@ -165,6 +166,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="sig_progress_update" from="." to="CharacterBody3D/HUD/LevelProgressBar" method="recv_progress"]
+[connection signal="sig_timer_update" from="." to="CharacterBody3D/HUD/Countdown" method="_recv_time_left"]
 
 [editable path="CharacterBody3D"]
 [editable path="CharacterBody3D/HUD"]
